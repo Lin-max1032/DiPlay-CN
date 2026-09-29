@@ -1,4 +1,4 @@
-name: Release source-only APK
+name: Release Chinese APK
 
 on:
   push:
@@ -12,6 +12,9 @@ jobs:
   release:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      OFFICIAL_APK_URL: https://github.com/shihabal3amri/DiPlay/releases/download/v0.2.6/DiPlay-0.2.6.apk
+      OFFICIAL_APK_SHA256: 604f27dd86fe0c2449a542645920492f79e37fea4c493065458b749dc350cc35
     steps:
       - uses: actions/checkout@v4
       - name: Reject credential files in public source
@@ -24,21 +27,36 @@ jobs:
         with:
           packages: platform-tools platforms;android-37.0 build-tools;36.0.0 ndk;28.2.13676358
       - uses: gradle/actions/setup-gradle@v4
-      - name: Test and build source-only debug APK
-        run: ./gradlew :shared:testDebugUnitTest :common:testDebugUnitTest :mobile:lintDebug :mobile:assembleDebug --stacktrace
+      - name: Provision runtime identity from official v0.2.6 APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="$RUNNER_TEMP/DiPlay-0.2.6.apk"
+          assets="$RUNNER_TEMP/auth-assets"
+          curl -fsSL -o "$apk" "$OFFICIAL_APK_URL"
+          python3 scripts/extract_official_identity.py "$apk" "$assets" "$OFFICIAL_APK_SHA256"
+          echo "DIPLAY_AUTH_ASSETS_DIR=$assets" >> "$GITHUB_ENV"
+      - name: Test and build standalone debug APK
+        run: ./gradlew :shared:testDebugUnitTest :common:testDebugUnitTest :mobile:lintDebug :mobile:assembleStandaloneDebug --stacktrace
+      - name: Verify identity is inside the APK and not in git
+        run: |
+          set -euo pipefail
+          python3 scripts/check_public_tree.py
+          python3 scripts/verify_apk_identity.py mobile/build/outputs/apk/debug/mobile-debug.apk
       - name: Prepare release files
         shell: bash
         run: |
           set -euo pipefail
-          apk="DiPlay-cn-${GITHUB_REF_NAME}-source-only-debug.apk"
+          apk="DiPlay-cn-${GITHUB_REF_NAME}.apk"
           cp mobile/build/outputs/apk/debug/mobile-debug.apk "$apk"
           sha256sum "$apk" > "$apk.sha256"
           printf '%s\n' \
-            "基于 DiPlay v0.2.6 的简体中文源码构建（${GITHUB_REF_NAME}）。" \
+            "基于上游 DiPlay v0.2.6 的简体中文构建（${GITHUB_REF_NAME}）。" \
             '' \
-            '- APK 为 Android 调试签名，可安装并启动。' \
-            '- 包名为 `com.shihab.diplay.hudtest`，可与正式版并存。' \
-            '- 此公开构建不包含 CarPlay 配件认证身份，不能作为可连接 iPhone 的独立 CarPlay 包。' \
+            '- 运行时配件身份来自官方公开包 [DiPlay-0.2.6.apk](https://github.com/shihabal3amri/DiPlay/releases/download/v0.2.6/DiPlay-0.2.6.apk)，构建前校验 SHA-256。' \
+            '- 认证文件不进入 Git；只打进本 APK，与官方公开包一样可被解包提取。' \
+            '- APK 为 Android 调试签名，包名为 `com.shihab.diplay.hudtest`，可与官方正式版并存。' \
+            '- 不是 Apple 认证产品；未来 iOS 是否继续接受该实验性身份无法保证。' \
             '- 同时附带 SHA-256 校验文件。' \
             > release-notes.md
       - name: Publish GitHub Release
@@ -47,11 +65,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          apk="DiPlay-cn-${GITHUB_REF_NAME}-source-only-debug.apk"
+          apk="DiPlay-cn-${GITHUB_REF_NAME}.apk"
           gh release create "$GITHUB_REF_NAME" \
-            "$apk#DiPlay-cn ${GITHUB_REF_NAME} 中文源码版 APK" \
+            "$apk#DiPlay-cn ${GITHUB_REF_NAME} 中文可连接 APK" \
             "$apk.sha256#SHA-256 校验文件" \
             --repo "$GITHUB_REPOSITORY" \
             --verify-tag \
-            --title "DiPlay-cn ${GITHUB_REF_NAME} 中文源码版" \
+            --title "DiPlay-cn ${GITHUB_REF_NAME} 中文可连接版" \
             --notes-file release-notes.md
