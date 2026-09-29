@@ -1,5 +1,7 @@
 # DiPlay
 
+> 简体中文版请参阅 [README.zh-CN.md](README.zh-CN.md)。本仓库的应用界面已完成简体中文汉化，代码基于上游 `v0.2.6`。
+
 **CarPlay for compatible Android head units.** Wired and wireless, with the familiar DiAuto interface. Independent app: `com.shihab.diplay`.
 
 [Download & website](https://shihabal3amri.github.io/DiPlay/) · [Release](https://github.com/shihabal3amri/DiPlay/releases/tag/v0.2.0) · [Report a problem](https://github.com/shihabal3amri/DiPlay/issues/new/choose)
@@ -32,7 +34,7 @@ The release changes were tested on the development DiLink5.1 car: live windshiel
 - [Release notes](CHANGELOG.md)
 - [Credits and licenses](docs/THIRD_PARTY_NOTICES.md)
 
-The website is available in English, Arabic, Russian, Spanish and Simplified Chinese. The current app interface is English.
+The website is available in English, Arabic, Russian, Spanish and Simplified Chinese. This fork provides a Simplified Chinese app interface.
 
 ## Source and credits
 
