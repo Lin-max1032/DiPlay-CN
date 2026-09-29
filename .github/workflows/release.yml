@@ -50,15 +50,7 @@ jobs:
           apk="DiPlay-cn-${GITHUB_REF_NAME}.apk"
           cp mobile/build/outputs/apk/debug/mobile-debug.apk "$apk"
           sha256sum "$apk" > "$apk.sha256"
-          printf '%s\n' \
-            "基于上游 DiPlay v0.2.6 的简体中文构建（${GITHUB_REF_NAME}）。" \
-            '' \
-            '- 运行时配件身份来自官方公开包 [DiPlay-0.2.6.apk](https://github.com/shihabal3amri/DiPlay/releases/download/v0.2.6/DiPlay-0.2.6.apk)，构建前校验 SHA-256。' \
-            '- 认证文件不进入 Git；只打进本 APK，与官方公开包一样可被解包提取。' \
-            '- APK 为 Android 调试签名，包名为 `com.shihab.diplay.hudtest`，可与官方正式版并存。' \
-            '- 不是 Apple 认证产品；未来 iOS 是否继续接受该实验性身份无法保证。' \
-            '- 同时附带 SHA-256 校验文件。' \
-            > release-notes.md
+          cp docs/GITHUB_RELEASE.md release-notes.md
       - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -66,10 +58,26 @@ jobs:
         run: |
           set -euo pipefail
           apk="DiPlay-cn-${GITHUB_REF_NAME}.apk"
+          gh release delete "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --yes || true
           gh release create "$GITHUB_REF_NAME" \
-            "$apk#DiPlay-cn ${GITHUB_REF_NAME} 中文可连接 APK" \
-            "$apk.sha256#SHA-256 校验文件" \
+            "$apk#DiPlay CN" \
+            "$apk.sha256#SHA-256" \
             --repo "$GITHUB_REPOSITORY" \
             --verify-tag \
-            --title "DiPlay-cn ${GITHUB_REF_NAME} 中文可连接版" \
+            --title "DiPlay CN 0.2.6" \
             --notes-file release-notes.md
+      - name: Keep only the latest Chinese release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName \
+            --jq '.[].tagName' | while IFS= read -r tag; do
+              case "$tag" in
+                "$GITHUB_REF_NAME") ;;
+                v*-cn.*)
+                  gh release delete "$tag" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag
+                  ;;
+              esac
+            done
