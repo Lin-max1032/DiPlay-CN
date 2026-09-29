@@ -1,0 +1,57 @@
+name: Release source-only APK
+
+on:
+  push:
+    tags:
+      - 'v*-cn.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject credential files in public source
+        run: python3 scripts/check_public_tree.py
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-37.0 build-tools;36.0.0 ndk;28.2.13676358
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Test and build source-only debug APK
+        run: ./gradlew :shared:testDebugUnitTest :common:testDebugUnitTest :mobile:lintDebug :mobile:assembleDebug --stacktrace
+      - name: Prepare release files
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="DiPlay-cn-${GITHUB_REF_NAME}-source-only-debug.apk"
+          cp mobile/build/outputs/apk/debug/mobile-debug.apk "$apk"
+          sha256sum "$apk" > "$apk.sha256"
+          printf '%s\n' \
+            "基于 DiPlay v0.2.6 的简体中文源码构建（${GITHUB_REF_NAME}）。" \
+            '' \
+            '- APK 为 Android 调试签名，可安装并启动。' \
+            '- 包名为 `com.shihab.diplay.hudtest`，可与正式版并存。' \
+            '- 此公开构建不包含 CarPlay 配件认证身份，不能作为可连接 iPhone 的独立 CarPlay 包。' \
+            '- 同时附带 SHA-256 校验文件。' \
+            > release-notes.md
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="DiPlay-cn-${GITHUB_REF_NAME}-source-only-debug.apk"
+          gh release create "$GITHUB_REF_NAME" \
+            "$apk#DiPlay-cn ${GITHUB_REF_NAME} 中文源码版 APK" \
+            "$apk.sha256#SHA-256 校验文件" \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --title "DiPlay-cn ${GITHUB_REF_NAME} 中文源码版" \
+            --notes-file release-notes.md
