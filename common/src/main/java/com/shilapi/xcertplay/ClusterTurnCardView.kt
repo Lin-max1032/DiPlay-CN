@@ -55,12 +55,12 @@ internal class ClusterTurnCardView(context: Context) : View(context) {
         super.onDraw(canvas)
         val next = guidance ?: return
         val card = ClusterTurnCardOverlay.card(width, height, position, size)
-        val radius = dp(18f)
+        val radius = card.height * 0.16f
         cardRect.set(card.left.toFloat(), card.top.toFloat(), (card.left + card.width).toFloat(), (card.top + card.height).toFloat())
         canvas.drawRoundRect(cardRect, radius, radius, cardPaint)
 
-        val padding = card.width * 0.08f
-        val arrowBox = card.height * 0.62f
+        val padding = card.height * 0.14f
+        val arrowBox = card.height - padding * 2f
         val arrowLeft = card.left + padding
         val arrowTop = card.top + padding
         drawArrow(canvas, next, arrowLeft, arrowTop, arrowBox)
@@ -68,13 +68,13 @@ internal class ClusterTurnCardView(context: Context) : View(context) {
         val textLeft = arrowLeft + arrowBox + padding
         val textWidth = card.left + card.width - padding - textLeft
         if (textWidth <= 0f) return
-        textPaint.textSize = card.height * 0.28f
-        mutedPaint.textSize = card.height * 0.16f
-        val distanceY = arrowTop + textPaint.textSize
-        canvas.drawText(distanceLabel(next.distanceMeters), textLeft, distanceY, textPaint)
+        textPaint.textSize = card.height * 0.34f
+        mutedPaint.textSize = card.height * 0.20f
+        val distanceY = card.top + padding + textPaint.textSize
+        canvas.drawText(ellipsize(distanceLabel(next.distanceMeters), textWidth, textPaint), textLeft, distanceY, textPaint)
         val road = roadLabel(next)
         if (road.isNotEmpty()) {
-            val roadY = (card.top + card.height - padding).coerceAtLeast(distanceY + mutedPaint.textSize)
+            val roadY = card.top + card.height - padding * 0.7f
             canvas.drawText(ellipsize(road, textWidth, mutedPaint), textLeft, roadY, mutedPaint)
         }
     }
