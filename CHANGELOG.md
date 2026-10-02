@@ -3,6 +3,8 @@
 - Rebase onto upstream DiPlay v0.2.8.
 - Restore media and navigation audio-stream selection to channels 0–20. Upstream 0.2.8 limited the picker and persistence to 0–10, which dropped vendor stream IDs such as BYD 14/15. Channel 0 remains automatic usage routing; 1–20 are legacy stream types. Existing 0.2.7 navigation stream settings are inherited when the new key is absent.
 - Keep the CN package `com.shihab.diplay.cn`, launcher name, Simplified Chinese fallback for unsupported car languages, and the wireless handoff watchdog skip after AirPlay is already active.
+- Package the public APK as a release variant, matching the official build type.
+- In Dashboard shows → Map with turn card, add Left / Centre / Right and Small / Medium / Large for a DiPlay-drawn instruction card. The iPhone still cannot place its own card independently of the car marker.
 
 # DiPlay 0.2.8 — 2026-09-30
 

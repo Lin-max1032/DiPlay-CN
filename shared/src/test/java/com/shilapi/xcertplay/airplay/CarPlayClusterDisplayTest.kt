@@ -51,9 +51,11 @@ class CarPlayClusterDisplayTest {
         val card = CarPlayClusterDisplay.config(1920, 720, content = CarPlayClusterDisplay.Content.TURN_CARD)
 
         assertEquals("maps:/car/instrumentcluster/instructioncard", card.initialUrl)
-        // The three contents the iPhone lists in altScreenURLs.
+        val mapWithCard = CarPlayClusterDisplay.config(1920, 720, content = CarPlayClusterDisplay.Content.INSTRUMENTS)
+        // Map-with-card asks the iPhone for the map stream; DiPlay draws the instruction card on top.
+        assertEquals("maps:/car/instrumentcluster/map", mapWithCard.initialUrl)
         assertEquals(
-            listOf("maps:/car/instrumentcluster/map", "maps:/car/instrumentcluster/instructioncard", "maps:/car/instrumentcluster"),
+            listOf("maps:/car/instrumentcluster/map", "maps:/car/instrumentcluster/instructioncard", "maps:/car/instrumentcluster/map"),
             CarPlayClusterDisplay.Content.entries.map { it.url },
         )
     }

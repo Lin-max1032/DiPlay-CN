@@ -338,16 +338,39 @@ class DiPlayActivity : ComponentActivity() {
                     val sizes = CarPlayClusterDisplay.scalePresets
                     val contents = CarPlayClusterDisplay.Content.entries
                     val content = AirPlayPersistence.loadClusterContent(this)
+                    val overlay = content == CarPlayClusterDisplay.Content.INSTRUMENTS
+                    val turnCard = content == CarPlayClusterDisplay.Content.TURN_CARD
                     choice(card, getString(R.string.dashboard_shows), listOf(
                         getString(R.string.dashboard_content_map),
                         getString(R.string.dashboard_content_turn_card),
                         getString(R.string.dashboard_content_map_with_turn_card),
-                    ), contents.indexOf(content)) {
-                        AirPlayPersistence.saveClusterContent(this, contents[it])
+                    ), contents.indexOf(content), reconnects = false) {
+                        val next = contents[it]
+                        AirPlayPersistence.saveClusterContent(this, next)
                         render()
+                        if (content == CarPlayClusterDisplay.Content.TURN_CARD || next == CarPlayClusterDisplay.Content.TURN_CARD) {
+                            reconnectForClusterMap()
+                        }
                     }
-                    // Both contents share the same safe area and position controls.
-                    val turnCard = content == CarPlayClusterDisplay.Content.TURN_CARD
+                    if (overlay) {
+                        val positions = CarPlayClusterDisplay.OverlayPosition.entries
+                        choice(card, getString(R.string.turn_card_overlay_position), listOf(
+                            getString(R.string.turn_card_overlay_left),
+                            getString(R.string.turn_card_overlay_centre),
+                            getString(R.string.turn_card_overlay_right),
+                        ), positions.indexOf(AirPlayPersistence.loadClusterTurnCardOverlayPosition(this)).coerceAtLeast(0), reconnects = false) {
+                            AirPlayPersistence.saveClusterTurnCardOverlayPosition(this, positions[it])
+                        }
+                        val overlaySizes = CarPlayClusterDisplay.OverlaySize.entries
+                        choice(card, getString(R.string.turn_card_overlay_size), listOf(
+                            getString(R.string.turn_card_overlay_small),
+                            getString(R.string.turn_card_overlay_medium),
+                            getString(R.string.turn_card_overlay_large),
+                        ), overlaySizes.indexOf(AirPlayPersistence.loadClusterTurnCardOverlaySize(this)).coerceAtLeast(0), reconnects = false) {
+                            AirPlayPersistence.saveClusterTurnCardOverlaySize(this, overlaySizes[it])
+                        }
+                        card.addView(label(getString(R.string.turn_card_overlay_note), 14, MUTED))
+                    }
                     choice(card, getString(if (turnCard) R.string.turn_card_size else R.string.cluster_map_size),
                         listOf(getString(R.string.cluster_size_standard), getString(R.string.cluster_size_larger), getString(R.string.cluster_size_largest)),
                         sizes.indexOf(AirPlayPersistence.loadClusterMapScalePercent(this)).coerceAtLeast(0)) {

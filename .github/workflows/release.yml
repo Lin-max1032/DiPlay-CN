@@ -36,19 +36,19 @@ jobs:
           curl -fsSL -o "$apk" "$OFFICIAL_APK_URL"
           python3 scripts/extract_official_identity.py "$apk" "$assets" "$OFFICIAL_APK_SHA256"
           echo "DIPLAY_AUTH_ASSETS_DIR=$assets" >> "$GITHUB_ENV"
-      - name: Test and build standalone debug APK
-        run: ./gradlew :shared:testDebugUnitTest :common:testDebugUnitTest :mobile:lintDebug :mobile:assembleStandaloneDebug --stacktrace
+      - name: Test and build standalone release APK
+        run: ./gradlew :shared:testDebugUnitTest :common:testDebugUnitTest :mobile:lintRelease :mobile:assembleStandaloneRelease --stacktrace
       - name: Verify identity is inside the APK and not in git
         run: |
           set -euo pipefail
           python3 scripts/check_public_tree.py
-          python3 scripts/verify_apk_identity.py mobile/build/outputs/apk/debug/mobile-debug.apk
+          python3 scripts/verify_apk_identity.py mobile/build/outputs/apk/release/mobile-release.apk
       - name: Prepare release files
         shell: bash
         run: |
           set -euo pipefail
           apk="DiPlay-cn-${GITHUB_REF_NAME}.apk"
-          cp mobile/build/outputs/apk/debug/mobile-debug.apk "$apk"
+          cp mobile/build/outputs/apk/release/mobile-release.apk "$apk"
           sha256sum "$apk" > "$apk.sha256"
           cp docs/GITHUB_RELEASE.md release-notes.md
       - name: Publish GitHub Release

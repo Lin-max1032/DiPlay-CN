@@ -63,6 +63,8 @@ object AirPlayPersistence {
     private const val KEY_CLUSTER_CONTENT = "cluster_content"
     private const val KEY_CLUSTER_MARKER_X = "cluster_marker_horizontal_step"
     private const val KEY_CLUSTER_MARKER_Y = "cluster_marker_vertical_step"
+    private const val KEY_CLUSTER_TURN_CARD_OVERLAY_POSITION = "cluster_turn_card_overlay_position"
+    private const val KEY_CLUSTER_TURN_CARD_OVERLAY_SIZE = "cluster_turn_card_overlay_size"
     private const val KEY_WIDTH_PHYSICAL_MM = "display_width_physical_mm"
     private const val KEY_PHYSICAL_SIZE_BASIS = "display_physical_size_basis"
     private const val KEY_MAX_DETECTED_WIDTH = "display_max_detected_width"
@@ -84,6 +86,9 @@ object AirPlayPersistence {
     const val DEFAULT_MODEL = "DiPlay"
     const val DEFAULT_OEM_LABEL = "BYD"
     const val DEFAULT_MFI_I2C_PATH = "/dev/i2c-1"
+
+    /** Applied by the CarPlay host so overlay position/size updates without reconnecting. */
+    @Volatile var overlaySettingsListener: (() -> Unit)? = null
 
     fun loadDisplayScaleTenths(context: Context): Int {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
@@ -468,6 +473,31 @@ object AirPlayPersistence {
 
     fun saveClusterContent(context: Context, content: CarPlayClusterDisplay.Content) {
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString(KEY_CLUSTER_CONTENT, content.name).apply()
+        overlaySettingsListener?.invoke()
+    }
+
+    fun loadClusterTurnCardOverlayPosition(context: Context): CarPlayClusterDisplay.OverlayPosition =
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+            .getString(KEY_CLUSTER_TURN_CARD_OVERLAY_POSITION, null)
+            ?.let { name -> CarPlayClusterDisplay.OverlayPosition.entries.firstOrNull { it.name == name } }
+            ?: CarPlayClusterDisplay.OverlayPosition.LEFT
+
+    fun saveClusterTurnCardOverlayPosition(context: Context, position: CarPlayClusterDisplay.OverlayPosition) {
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
+            .putString(KEY_CLUSTER_TURN_CARD_OVERLAY_POSITION, position.name).apply()
+        overlaySettingsListener?.invoke()
+    }
+
+    fun loadClusterTurnCardOverlaySize(context: Context): CarPlayClusterDisplay.OverlaySize =
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+            .getString(KEY_CLUSTER_TURN_CARD_OVERLAY_SIZE, null)
+            ?.let { name -> CarPlayClusterDisplay.OverlaySize.entries.firstOrNull { it.name == name } }
+            ?: CarPlayClusterDisplay.OverlaySize.MEDIUM
+
+    fun saveClusterTurnCardOverlaySize(context: Context, size: CarPlayClusterDisplay.OverlaySize) {
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
+            .putString(KEY_CLUSTER_TURN_CARD_OVERLAY_SIZE, size.name).apply()
+        overlaySettingsListener?.invoke()
     }
 
     fun loadClusterMapScalePercent(context: Context): Int = CarPlayClusterDisplay.STREAM_SCALE_PERCENT.let { default ->
