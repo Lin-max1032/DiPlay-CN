@@ -33,6 +33,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.shilapi.xcertplay.airplay.CarPlayClusterDisplay
+import com.shilapi.xcertplay.airplay.ClusterTurnCardOverlay
 import com.shilapi.xcertplay.hud.BydAdbAccess
 import com.shilapi.xcertplay.hud.BydOutputSettings
 import com.shilapi.xcertplay.host.R
@@ -353,14 +354,6 @@ class DiPlayActivity : ComponentActivity() {
                         }
                     }
                     if (overlay) {
-                        val positions = CarPlayClusterDisplay.OverlayPosition.entries
-                        choice(card, getString(R.string.turn_card_overlay_position), listOf(
-                            getString(R.string.turn_card_overlay_left),
-                            getString(R.string.turn_card_overlay_centre),
-                            getString(R.string.turn_card_overlay_right),
-                        ), positions.indexOf(AirPlayPersistence.loadClusterTurnCardOverlayPosition(this)).coerceAtLeast(0), reconnects = false) {
-                            AirPlayPersistence.saveClusterTurnCardOverlayPosition(this, positions[it])
-                        }
                         val overlaySizes = CarPlayClusterDisplay.OverlaySize.entries
                         choice(card, getString(R.string.turn_card_overlay_size), listOf(
                             getString(R.string.turn_card_overlay_small),
@@ -369,6 +362,23 @@ class DiPlayActivity : ComponentActivity() {
                         ), overlaySizes.indexOf(AirPlayPersistence.loadClusterTurnCardOverlaySize(this)).coerceAtLeast(0), reconnects = false) {
                             AirPlayPersistence.saveClusterTurnCardOverlaySize(this, overlaySizes[it])
                         }
+                        val across = ClusterTurnCardOverlay.xPercents.toList()
+                        choice(card, getString(R.string.turn_card_overlay_horizontal), across.map {
+                            overlayOffsetLabel(it, getString(R.string.marker_left), getString(R.string.marker_right), 50)
+                        }, across.indexOf(AirPlayPersistence.loadClusterTurnCardOverlayXPercent(this)).coerceAtLeast(0), reconnects = false) {
+                            AirPlayPersistence.saveClusterTurnCardOverlayXPercent(this, across[it])
+                        }
+                        val upDown = ClusterTurnCardOverlay.yPercents.toList()
+                        choice(card, getString(R.string.turn_card_overlay_vertical), upDown.map {
+                            overlayOffsetLabel(it, getString(R.string.marker_up), getString(R.string.marker_down), 40)
+                        }, upDown.indexOf(AirPlayPersistence.loadClusterTurnCardOverlayYPercent(this)).coerceAtLeast(0), reconnects = false) {
+                            AirPlayPersistence.saveClusterTurnCardOverlayYPercent(this, upDown[it])
+                        }
+                        card.addView(button(getString(R.string.reset_turn_card_overlay), false) {
+                            AirPlayPersistence.saveClusterTurnCardOverlayXPercent(this, ClusterTurnCardOverlay.DEFAULT_X_PERCENT)
+                            AirPlayPersistence.saveClusterTurnCardOverlayYPercent(this, ClusterTurnCardOverlay.DEFAULT_Y_PERCENT)
+                            render()
+                        }, matchButton(10, 56))
                         card.addView(label(getString(R.string.turn_card_overlay_note), 14, MUTED))
                     }
                     choice(card, getString(if (turnCard) R.string.turn_card_size else R.string.cluster_map_size),
@@ -721,6 +731,15 @@ class DiPlayActivity : ComponentActivity() {
         step == 0 -> getString(R.string.marker_centre_default)
         step < 0 -> "$negative ${-step * CarPlayClusterDisplay.MARKER_STEP_PERCENT} %"
         else -> "$positive ${step * CarPlayClusterDisplay.MARKER_STEP_PERCENT} %"
+    }
+
+    private fun overlayOffsetLabel(percent: Int, negative: String, positive: String, centre: Int): String {
+        val delta = percent - centre
+        return when {
+            delta == 0 -> getString(R.string.marker_centre_default)
+            delta < 0 -> "$negative ${-delta} %"
+            else -> "$positive $delta %"
+        }
     }
 
     private fun showClusterAccessSetup() {

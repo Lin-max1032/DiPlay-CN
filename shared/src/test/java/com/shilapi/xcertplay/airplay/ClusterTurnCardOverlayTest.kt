@@ -6,64 +6,54 @@ import org.junit.Test
 
 class ClusterTurnCardOverlayTest {
     @Test
-    fun leftCentreAndRightStayInsideTheVisibleNaviWindow() {
-        val panelWidth = 1920
-        val panelHeight = 720
-        val window = ClusterTurnCardOverlay.visibleWindow(panelWidth, panelHeight)
+    fun manualOffsetsReachThePanelEdges() {
         val left = ClusterTurnCardOverlay.card(
-            panelWidth, panelHeight,
-            CarPlayClusterDisplay.OverlayPosition.LEFT,
-            CarPlayClusterDisplay.OverlaySize.SMALL,
-        )
-        val centre = ClusterTurnCardOverlay.card(
-            panelWidth, panelHeight,
-            CarPlayClusterDisplay.OverlayPosition.CENTER,
-            CarPlayClusterDisplay.OverlaySize.SMALL,
+            1920, 720, 10, 28, CarPlayClusterDisplay.OverlaySize.SMALL,
         )
         val right = ClusterTurnCardOverlay.card(
-            panelWidth, panelHeight,
-            CarPlayClusterDisplay.OverlayPosition.RIGHT,
-            CarPlayClusterDisplay.OverlaySize.SMALL,
+            1920, 720, 90, 28, CarPlayClusterDisplay.OverlaySize.SMALL,
         )
+        assertTrue(left.left < 1920 * 0.12)
+        assertTrue(right.left + right.width > 1920 * 0.88)
+        assertTrue(right.left - left.left > 1920 * 0.45)
+    }
 
-        assertTrue(left.left < centre.left)
-        assertTrue(centre.left < right.left)
-        for (card in listOf(left, centre, right)) {
-            assertTrue(card.left >= window.left)
-            assertTrue(card.top >= window.top)
-            assertTrue(card.left + card.width <= window.left + window.width)
-            assertTrue(card.top + card.height <= window.top + window.height)
-        }
-        assertEquals(left.width, right.width)
+    @Test
+    fun defaultSitsOnTheRightOfThePanel() {
+        val card = ClusterTurnCardOverlay.card(
+            1920, 720,
+            ClusterTurnCardOverlay.DEFAULT_X_PERCENT,
+            ClusterTurnCardOverlay.DEFAULT_Y_PERCENT,
+            CarPlayClusterDisplay.OverlaySize.MEDIUM,
+        )
+        assertTrue(card.left > 1920 / 2)
+        assertTrue(card.top < 720 / 2)
+        assertTrue(card.left + card.width <= 1920)
+        assertTrue(card.top + card.height <= 720)
     }
 
     @Test
     fun largeCardDoesNotCoverTheWholePanel() {
         val large = ClusterTurnCardOverlay.card(
-            1920, 720,
-            CarPlayClusterDisplay.OverlayPosition.RIGHT,
-            CarPlayClusterDisplay.OverlaySize.LARGE,
+            1920, 720, 75, 28, CarPlayClusterDisplay.OverlaySize.LARGE,
         )
         assertTrue(large.width < 1920 / 2)
         assertTrue(large.height < 720 / 2)
-        assertTrue(large.left > 1920 / 3)
-        assertTrue(large.left + large.width < 1920 * 72 / 100)
     }
 
     @Test
-    fun largerSizeGrowsTheCardInsideTheWindow() {
-        val small = ClusterTurnCardOverlay.card(
-            1920, 720,
-            CarPlayClusterDisplay.OverlayPosition.LEFT,
-            CarPlayClusterDisplay.OverlaySize.SMALL,
-        )
-        val large = ClusterTurnCardOverlay.card(
-            1920, 720,
-            CarPlayClusterDisplay.OverlayPosition.LEFT,
-            CarPlayClusterDisplay.OverlaySize.LARGE,
-        )
-        assertTrue(large.width > small.width)
-        assertTrue(large.height > small.height)
-        assertTrue(small.width < 1920 * 0.20)
+    fun percentStepsStayOnThePanel() {
+        for (x in ClusterTurnCardOverlay.xPercents) {
+            for (y in ClusterTurnCardOverlay.yPercents) {
+                val card = ClusterTurnCardOverlay.card(
+                    1920, 720, x, y, CarPlayClusterDisplay.OverlaySize.MEDIUM,
+                )
+                assertTrue(card.left >= 0)
+                assertTrue(card.top >= 0)
+                assertTrue(card.left + card.width <= 1920)
+                assertTrue(card.top + card.height <= 720)
+            }
+        }
+        assertEquals(5, ClusterTurnCardOverlay.STEP_PERCENT)
     }
 }

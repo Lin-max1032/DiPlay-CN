@@ -3,22 +3,24 @@ package com.shilapi.xcertplay.airplay
 /**
  * Where DiPlay draws the instruction card on top of the dashboard map.
  *
- * Apple Maps paints the turn card inside the same safe area as the car marker, so the iPhone
- * cannot place the two independently. The overlay is DiPlay's own layer.
- *
- * BYD crops the same 1920×720 stream in both Full and Small screen navi. The measured centre
- * window that stays visible is about x 31–68 %, y 16–89 % of the panel (see
- * [CarPlayClusterDisplay.SAFE_AREA_PERCENT]). Placement and size are relative to that window,
- * not the full panel; otherwise Right/Small sits under the speed/power readouts and Large
- * covers half the cluster.
+ * Placement is a percent of the full 1920×720 panel so Left/Right can reach the
+ * cluster edges. Size still follows the measured centre navi window so Large
+ * does not cover half the cluster.
  */
 object ClusterTurnCardOverlay {
     data class CardRect(val left: Int, val top: Int, val width: Int, val height: Int)
 
+    const val STEP_PERCENT = 5
+    const val DEFAULT_X_PERCENT = 75
+    const val DEFAULT_Y_PERCENT = 30
+    val xPercents = 10..90 step STEP_PERCENT
+    val yPercents = 15..70 step STEP_PERCENT
+
     fun card(
         panelWidth: Int,
         panelHeight: Int,
-        position: CarPlayClusterDisplay.OverlayPosition,
+        xPercent: Int,
+        yPercent: Int,
         size: CarPlayClusterDisplay.OverlaySize,
     ): CardRect {
         require(panelWidth > 0 && panelHeight > 0)
@@ -33,21 +35,13 @@ object ClusterTurnCardOverlay {
             CarPlayClusterDisplay.OverlaySize.MEDIUM -> 0.28f
             CarPlayClusterDisplay.OverlaySize.LARGE -> 0.34f
         }
-        val width = (window.width * widthFraction).toInt().coerceAtLeast(140).coerceAtMost(window.width)
-        val height = (window.height * heightFraction).toInt().coerceAtLeast(72).coerceAtMost(window.height)
-        val inset = (window.width * 0.04f).toInt().coerceAtLeast(8)
-        val top = window.top + (window.height * 0.08f).toInt()
-        val left = when (position) {
-            CarPlayClusterDisplay.OverlayPosition.LEFT -> window.left + inset
-            CarPlayClusterDisplay.OverlayPosition.CENTER -> window.left + ((window.width - width) / 2)
-            CarPlayClusterDisplay.OverlayPosition.RIGHT -> window.left + window.width - width - inset
-        }
-        return CardRect(
-            left.coerceIn(window.left, window.left + window.width - width),
-            top.coerceIn(window.top, window.top + window.height - height),
-            width,
-            height,
-        )
+        val width = (window.width * widthFraction).toInt().coerceAtLeast(140).coerceAtMost(panelWidth)
+        val height = (window.height * heightFraction).toInt().coerceAtLeast(72).coerceAtMost(panelHeight)
+        val x = xPercent.coerceIn(xPercents.first, xPercents.last)
+        val y = yPercent.coerceIn(yPercents.first, yPercents.last)
+        val left = (panelWidth * x / 100 - width / 2).coerceIn(0, panelWidth - width)
+        val top = (panelHeight * y / 100 - height / 2).coerceIn(0, panelHeight - height)
+        return CardRect(left, top, width, height)
     }
 
     internal fun visibleWindow(panelWidth: Int, panelHeight: Int): CardRect {

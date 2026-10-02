@@ -1,6 +1,7 @@
 package com.shilapi.xcertplay
 
 import com.shilapi.xcertplay.airplay.CarPlayClusterDisplay
+import com.shilapi.xcertplay.airplay.ClusterTurnCardOverlay
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -19,23 +20,37 @@ class ClusterTurnCardPersistenceTest {
         AirPlayPersistence.overlaySettingsListener = null
     }
 
-    @Test fun overlayDefaultsToLeftMedium() {
-        assertEquals(CarPlayClusterDisplay.OverlayPosition.LEFT, AirPlayPersistence.loadClusterTurnCardOverlayPosition(context))
+    @Test fun overlayDefaultsToRightOfCentre() {
+        assertEquals(ClusterTurnCardOverlay.DEFAULT_X_PERCENT, AirPlayPersistence.loadClusterTurnCardOverlayXPercent(context))
+        assertEquals(ClusterTurnCardOverlay.DEFAULT_Y_PERCENT, AirPlayPersistence.loadClusterTurnCardOverlayYPercent(context))
         assertEquals(CarPlayClusterDisplay.OverlaySize.MEDIUM, AirPlayPersistence.loadClusterTurnCardOverlaySize(context))
     }
 
-    @Test fun overlayPositionAndSizeRoundTrip() {
-        AirPlayPersistence.saveClusterTurnCardOverlayPosition(context, CarPlayClusterDisplay.OverlayPosition.RIGHT)
-        AirPlayPersistence.saveClusterTurnCardOverlaySize(context, CarPlayClusterDisplay.OverlaySize.LARGE)
-        assertEquals(CarPlayClusterDisplay.OverlayPosition.RIGHT, AirPlayPersistence.loadClusterTurnCardOverlayPosition(context))
-        assertEquals(CarPlayClusterDisplay.OverlaySize.LARGE, AirPlayPersistence.loadClusterTurnCardOverlaySize(context))
+    @Test fun overlayOffsetsRoundTrip() {
+        AirPlayPersistence.saveClusterTurnCardOverlayXPercent(context, 90)
+        AirPlayPersistence.saveClusterTurnCardOverlayYPercent(context, 12)
+        AirPlayPersistence.saveClusterTurnCardOverlaySize(context, CarPlayClusterDisplay.OverlaySize.SMALL)
+        assertEquals(90, AirPlayPersistence.loadClusterTurnCardOverlayXPercent(context))
+        assertEquals(12, AirPlayPersistence.loadClusterTurnCardOverlayYPercent(context))
+        assertEquals(CarPlayClusterDisplay.OverlaySize.SMALL, AirPlayPersistence.loadClusterTurnCardOverlaySize(context))
+    }
+
+    @Test fun legacyLeftCentreRightMigrateToPercents() {
+        val prefs = context.getSharedPreferences("xcertplay_airplay", 0)
+        prefs.edit().putString("cluster_turn_card_overlay_position", "LEFT").apply()
+        assertEquals(20, AirPlayPersistence.loadClusterTurnCardOverlayXPercent(context))
+        prefs.edit().putString("cluster_turn_card_overlay_position", "CENTER").apply()
+        assertEquals(50, AirPlayPersistence.loadClusterTurnCardOverlayXPercent(context))
+        prefs.edit().putString("cluster_turn_card_overlay_position", "RIGHT").apply()
+        assertEquals(75, AirPlayPersistence.loadClusterTurnCardOverlayXPercent(context))
     }
 
     @Test fun overlaySaveNotifiesTheHostWithoutReconnecting() {
         var noticed = 0
         AirPlayPersistence.overlaySettingsListener = { noticed++ }
-        AirPlayPersistence.saveClusterTurnCardOverlayPosition(context, CarPlayClusterDisplay.OverlayPosition.CENTER)
-        AirPlayPersistence.saveClusterTurnCardOverlaySize(context, CarPlayClusterDisplay.OverlaySize.SMALL)
-        assertEquals(2, noticed)
+        AirPlayPersistence.saveClusterTurnCardOverlayXPercent(context, 20)
+        AirPlayPersistence.saveClusterTurnCardOverlayYPercent(context, 50)
+        AirPlayPersistence.saveClusterTurnCardOverlaySize(context, CarPlayClusterDisplay.OverlaySize.LARGE)
+        assertEquals(3, noticed)
     }
 }

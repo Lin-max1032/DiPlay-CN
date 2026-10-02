@@ -1,3 +1,9 @@
+# DiPlay CN 0.2.8.4 — 2026-10-02
+
+- Manual turn-card overlay placement: left/right and up/down in 5 % steps across the whole cluster, not just the centre navi window.
+- Redraw the overlay as a dark glass card with geometric turn / U-turn / roundabout icons.
+- Version numbers after the official 0.2.8 baseline now increment as 0.2.8.1, 0.2.8.2, …
+
 # DiPlay CN 0.2.8 — 2026-10-02
 
 - Rebase onto upstream DiPlay v0.2.8.

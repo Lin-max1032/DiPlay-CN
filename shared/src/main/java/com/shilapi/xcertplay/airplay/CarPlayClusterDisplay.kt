@@ -24,8 +24,6 @@ object CarPlayClusterDisplay {
         INSTRUMENTS(MAP_URL),
     }
 
-    enum class OverlayPosition { LEFT, CENTER, RIGHT }
-
     enum class OverlaySize { SMALL, MEDIUM, LARGE }
 
     /**

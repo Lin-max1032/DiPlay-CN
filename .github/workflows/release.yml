@@ -64,5 +64,5 @@ jobs:
             "$apk.sha256#SHA-256" \
             --repo "$GITHUB_REPOSITORY" \
             --verify-tag \
-            --title "DiPlay CN 0.2.8" \
+            --title "DiPlay CN 0.2.8.4" \
             --notes-file release-notes.md

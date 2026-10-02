@@ -136,11 +136,8 @@ internal class ClusterMapPresentation(
         }
     }
 
-    fun setTurnCardOverlay(
-        position: CarPlayClusterDisplay.OverlayPosition,
-        size: CarPlayClusterDisplay.OverlaySize,
-    ) {
-        turnCardView?.setLayout(position, size)
+    fun setTurnCardOverlay(xPercent: Int, yPercent: Int, size: CarPlayClusterDisplay.OverlaySize) {
+        turnCardView?.setLayout(xPercent, yPercent, size)
     }
 
     fun setTurnCardGuidance(guidance: ClusterTurnGuidance?) {

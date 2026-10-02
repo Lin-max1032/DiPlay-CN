@@ -38,7 +38,7 @@ Earlier releases were tested on the development DiLink5.1 car: live windshield g
 - Optional iOS 27 video playback on the car screen while parked, with iPhone, touchscreen and steering-wheel controls. Playback closes when the car leaves P.
 - DRM-protected video such as Apple TV+ is not supported; DiPlay is not a licensed FairPlay receiver. Netflix does not support AirPlay.
 - Restore media and navigation audio-stream selection to channels 0–20 (0.2.8 shipped 0–10). Channel 0 stays automatic; 1–20 are legacy stream IDs, including vendor outputs on BYD head units.
-- In Map with turn card, place a DiPlay-drawn instruction card on the left, centre or right and choose Small / Medium / Large. Changes apply without reconnecting.
+- In Map with turn card, place a DiPlay-drawn instruction card with Small / Medium / Large size and 5 % left/right and up/down offsets. Changes apply without reconnecting.
 
 ## Documentation
 
