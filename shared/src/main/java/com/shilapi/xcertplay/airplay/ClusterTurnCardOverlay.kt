@@ -13,8 +13,14 @@ object ClusterTurnCardOverlay {
     const val STEP_PERCENT = 2
     const val DEFAULT_X_PERCENT = 76
     const val DEFAULT_Y_PERCENT = 30
-    val xPercents = (8..92 step STEP_PERCENT).toList()
-    val yPercents = (12..72 step STEP_PERCENT).toList()
+    val xPercents = listOf(
+        8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48,
+        50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92,
+    )
+    val yPercents = listOf(
+        12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48,
+        50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72,
+    )
 
     fun card(
         panelWidth: Int,
