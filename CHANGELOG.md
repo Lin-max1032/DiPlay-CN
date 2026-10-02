@@ -1,3 +1,5 @@
+CN 相对官方的改动见 [docs/CN_OPTIMIZATIONS.md](docs/CN_OPTIMIZATIONS.md)。下载与每次发版说明见 [GitHub Releases](https://github.com/serein-morii/DiPlay-CN/releases)。
+
 # DiPlay CN 0.2.8.5 — 2026-10-02
 
 - Keep 0.2.8.4 overlay placement and geometric icons; snap overlay offsets onto the 5 % grid so settings and tests stay in range.

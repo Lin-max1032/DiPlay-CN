@@ -1,4 +1,24 @@
-DiPlay CN 0.2.8.5，基于上游 DiPlay v0.2.8。媒体和导航音频流选择恢复为 0–20。地图和转向提示卡模式下可按 5% 步进调节提示卡的上下左右位置，并选择小/中/大。
+# DiPlay CN 0.2.8.5
+
+基于官方 DiPlay v0.2.8。包名 `com.shihab.diplay.cn`，可与官方版并存。覆盖安装上一版 CN 即可保留设置。
+
+**下载**
+
+- APK：本 Release 附件 `DiPlay-cn-v0.2.8.5-cn.1.apk`
+- 完整优化记录：[docs/CN_OPTIMIZATIONS.md](https://github.com/serein-morii/DiPlay-CN/blob/main/docs/CN_OPTIMIZATIONS.md)
+
+**这一版（0.2.8.5）**
+
+- 转向提示卡位置按 5% 网格吸附。
+- 卡片可在整个仪表盘上左右、上下移动，并选择小 / 中 / 大。
+- 深色玻璃卡 + 几何转向 / 掉头 / 环岛图标。
+- 发版为 release 包，体积与官方接近。
+
+**相对官方 0.2.8 一直保留的改动**
+
+- 音频流选择 0–20（官方 0.2.8 仅 0–10）。
+- 不支持的车机语言默认简体中文。
+- AirPlay 已连接后跳过无线 handoff watchdog。
 
 请安装在车机上，不要安装在 iPhone 上。车机必须允许安装 APK。有线连接需要 Android 9 及以上，无线 Wi-Fi Direct 需要 Android 10 及以上。
 

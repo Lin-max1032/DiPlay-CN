@@ -6,9 +6,15 @@
 
 > **BYD support scope:** These projects focus on BYD cars. They may work on other brands, but other brands are unsupported and there are no plans to add support or fix brand-specific incompatibilities.
 
-[Download & website](https://shihabal3amri.github.io/DiPlay/) · [Release](https://github.com/shihabal3amri/DiPlay/releases/tag/v0.2.8) · [Report a problem](https://github.com/shihabal3amri/DiPlay/issues/new/choose)
+[Download CN 0.2.8.5](https://github.com/serein-morii/DiPlay-CN/releases/tag/v0.2.8.5-cn.1) · [CN optimizations](docs/CN_OPTIMIZATIONS.md) · [Upstream DiPlay](https://github.com/shihabal3amri/DiPlay/releases/tag/v0.2.8)
 
 ![DiPlay home](site/assets/home.png)
+
+## Download
+
+Current CN build: **0.2.8.5** (`versionCode` 31). [APK](https://github.com/serein-morii/DiPlay-CN/releases/download/v0.2.8.5-cn.1/DiPlay-cn-v0.2.8.5-cn.1.apk) · [All CN releases](https://github.com/serein-morii/DiPlay-CN/releases) · [What CN changed](docs/CN_OPTIMIZATIONS.md)
+
+Install over the previous CN APK to keep settings. Same package name and signing key. Do not replace official DiPlay (`com.shihab.diplay`).
 
 ## 0.2.8 — public preview
 
@@ -48,6 +54,7 @@ Earlier releases were tested on the development DiLink5.1 car: live windshield g
 - [Build from source](docs/BUILD.md)
 - [Validation](docs/VALIDATION.md)
 - [Release notes](CHANGELOG.md)
+- [CN optimizations](docs/CN_OPTIMIZATIONS.md)
 - [Credits and licenses](docs/THIRD_PARTY_NOTICES.md)
 
 The website is available in English, Arabic, Russian, Spanish and Simplified Chinese. The app interface supports those same five languages. Choose the app language in Settings; on Android 13+, it stays synchronized with Android’s per-app language setting.
