@@ -6,7 +6,7 @@
 
 > **BYD support scope:** These projects focus on BYD cars. They may work on other brands, but other brands are unsupported and there are no plans to add support or fix brand-specific incompatibilities.
 
-[Download CN 0.2.9.1](https://github.com/serein-morii/DiPlay-CN/releases/tag/v0.2.9.1-cn.1) · [CN optimizations](docs/CN_OPTIMIZATIONS.md) · [Upstream DiPlay](https://github.com/shihabal3amri/DiPlay/releases/tag/v0.2.9)
+[Download CN 0.2.9](https://github.com/serein-morii/DiPlay-CN/releases/tag/v0.2.9-cn.1) · [CN optimizations](docs/CN_OPTIMIZATIONS.md) · [Upstream DiPlay](https://github.com/shihabal3amri/DiPlay/releases/tag/v0.2.9)
 
 ![DiPlay home](site/assets/home.png)
 

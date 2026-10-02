@@ -4,13 +4,13 @@
 
 覆盖安装：包名始终为 `com.shihab.diplay.cn`，公开 APK 使用同一套 debug 签名。只要新包的 `versionCode` 更大，即可覆盖旧版并保留设置。不能覆盖官方 `com.shihab.diplay`。
 
-## 0.2.9.1 — 2026-10-02
+## 0.2.9-cn.1 — 2026-10-02
 
-- 基于官方 v0.2.9。版本名 `0.2.9.1`，`versionCode` 33。
+- 基于官方 v0.2.9。版本名 `0.2.9`，`versionCode` 34，标签 `v0.2.9-cn.1`（沿用官方版号 + `-cn` 的编号方式）。
 - 仪表盘四种显示：只地图、只官方转向卡、官方地图+官方玻璃卡、官方地图+自定义可挪转向卡。
 - 自定义卡 2% 步进，直行也显示；打开即加载。
 - 主屏幕浮动地图卡可与仪表盘同步或分开。
-- APK：[DiPlay-cn-v0.2.9.1-cn.1.apk](https://github.com/serein-morii/DiPlay-CN/releases/download/v0.2.9.1-cn.1/DiPlay-cn-v0.2.9.1-cn.1.apk)
+- APK：[DiPlay-cn-v0.2.9-cn.1.apk](https://github.com/serein-morii/DiPlay-CN/releases/download/v0.2.9-cn.1/DiPlay-cn-v0.2.9-cn.1.apk)
 
 ## 0.2.8.6 — 2026-10-02
 

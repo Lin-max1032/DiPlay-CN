@@ -6,7 +6,7 @@
 
 > 这些项目专注于比亚迪汽车。它们可能在其他品牌上运行，但其他品牌不在支持范围内，也没有增加支持或修复其品牌特定兼容性问题的计划。
 
-[下载 CN 0.2.9.1](https://github.com/serein-morii/DiPlay-CN/releases/tag/v0.2.9.1-cn.1) · [CN 优化日志](docs/CN_OPTIMIZATIONS.md) · [完整说明](README.md)
+[下载 CN 0.2.9](https://github.com/serein-morii/DiPlay-CN/releases/download/v0.2.9-cn.1/DiPlay-cn-v0.2.9-cn.1.apk) · [CN 优化日志](docs/CN_OPTIMIZATIONS.md) · [完整说明](README.md)
 
 0.2.8 为公开预览版，未经 Apple 认证。请安装在车机上，而非 iPhone。无需越狱、转接盒或认证服务器。无线连接支持车载热点或 Wi-Fi Direct（后者需要 Android 10 或更高版本）。
 

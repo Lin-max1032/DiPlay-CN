@@ -1,13 +1,13 @@
-# DiPlay CN 0.2.9.1
+# DiPlay CN 0.2.9
 
 基于官方 DiPlay v0.2.9。包名 `com.shihab.diplay.cn`，可与官方版并存。覆盖安装上一版 CN 即可保留设置。
 
 **下载**
 
-- APK：本 Release 附件 `DiPlay-cn-v0.2.9.1-cn.1.apk`
+- APK：本 Release 附件 `DiPlay-cn-v0.2.9-cn.1.apk`
 - 完整优化记录：[docs/CN_OPTIMIZATIONS.md](https://github.com/serein-morii/DiPlay-CN/blob/main/docs/CN_OPTIMIZATIONS.md)
 
-**这一版（0.2.9.1）**
+**这一版（0.2.9-cn.1）**
 
 - 同步官方 0.2.9（浮动地图卡、小组件、乌克兰语等）。
 - 仪表盘四种显示：只地图、只官方转向卡、官方地图+官方玻璃卡、官方地图+可挪的自定义卡。
