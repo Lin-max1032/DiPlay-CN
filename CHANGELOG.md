@@ -1,3 +1,7 @@
+# DiPlay CN 0.2.8.5 — 2026-10-02
+
+- Keep 0.2.8.4 overlay placement and geometric icons; snap overlay offsets onto the 5 % grid so settings and tests stay in range.
+
 # DiPlay CN 0.2.8.4 — 2026-10-02
 
 - Manual turn-card overlay placement: left/right and up/down in 5 % steps across the whole cluster, not just the centre navi window.

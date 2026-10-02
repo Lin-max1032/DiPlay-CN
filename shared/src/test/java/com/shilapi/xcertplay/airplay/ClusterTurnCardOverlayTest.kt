@@ -54,6 +54,7 @@ class ClusterTurnCardOverlayTest {
                 assertTrue(card.top + card.height <= 720)
             }
         }
+        assertEquals(75, ClusterTurnCardOverlay.snap(76, ClusterTurnCardOverlay.xPercents))
         assertEquals(5, ClusterTurnCardOverlay.STEP_PERCENT)
     }
 }

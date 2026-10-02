@@ -362,13 +362,13 @@ class DiPlayActivity : ComponentActivity() {
                         ), overlaySizes.indexOf(AirPlayPersistence.loadClusterTurnCardOverlaySize(this)).coerceAtLeast(0), reconnects = false) {
                             AirPlayPersistence.saveClusterTurnCardOverlaySize(this, overlaySizes[it])
                         }
-                        val across = ClusterTurnCardOverlay.xPercents.toList()
+                        val across = ClusterTurnCardOverlay.xPercents
                         choice(card, getString(R.string.turn_card_overlay_horizontal), across.map {
                             overlayOffsetLabel(it, getString(R.string.marker_left), getString(R.string.marker_right), 50)
                         }, across.indexOf(AirPlayPersistence.loadClusterTurnCardOverlayXPercent(this)).coerceAtLeast(0), reconnects = false) {
                             AirPlayPersistence.saveClusterTurnCardOverlayXPercent(this, across[it])
                         }
-                        val upDown = ClusterTurnCardOverlay.yPercents.toList()
+                        val upDown = ClusterTurnCardOverlay.yPercents
                         choice(card, getString(R.string.turn_card_overlay_vertical), upDown.map {
                             overlayOffsetLabel(it, getString(R.string.marker_up), getString(R.string.marker_down), 40)
                         }, upDown.indexOf(AirPlayPersistence.loadClusterTurnCardOverlayYPercent(this)).coerceAtLeast(0), reconnects = false) {

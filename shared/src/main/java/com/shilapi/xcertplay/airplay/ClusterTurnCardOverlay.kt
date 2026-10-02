@@ -13,8 +13,8 @@ object ClusterTurnCardOverlay {
     const val STEP_PERCENT = 5
     const val DEFAULT_X_PERCENT = 75
     const val DEFAULT_Y_PERCENT = 30
-    val xPercents = 10..90 step STEP_PERCENT
-    val yPercents = 15..70 step STEP_PERCENT
+    val xPercents = listOf(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90)
+    val yPercents = listOf(15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70)
 
     fun card(
         panelWidth: Int,
@@ -37,12 +37,15 @@ object ClusterTurnCardOverlay {
         }
         val width = (window.width * widthFraction).toInt().coerceAtLeast(140).coerceAtMost(panelWidth)
         val height = (window.height * heightFraction).toInt().coerceAtLeast(72).coerceAtMost(panelHeight)
-        val x = xPercent.coerceIn(xPercents.first, xPercents.last)
-        val y = yPercent.coerceIn(yPercents.first, yPercents.last)
+        val x = snap(xPercent, xPercents)
+        val y = snap(yPercent, yPercents)
         val left = (panelWidth * x / 100 - width / 2).coerceIn(0, panelWidth - width)
         val top = (panelHeight * y / 100 - height / 2).coerceIn(0, panelHeight - height)
         return CardRect(left, top, width, height)
     }
+
+    fun snap(value: Int, choices: List<Int>): Int =
+        choices.minByOrNull { kotlin.math.abs(it - value) } ?: choices.first()
 
     internal fun visibleWindow(panelWidth: Int, panelHeight: Int): CardRect {
         val area = CarPlayClusterDisplay.SAFE_AREA_PERCENT

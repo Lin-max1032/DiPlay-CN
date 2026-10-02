@@ -184,7 +184,7 @@ internal class ClusterTurnCardView(context: Context) : View(context) {
 
     private fun drawRoundabout(canvas: Canvas, cx: Float, cy: Float, box: Float, exit: Int) {
         val radius = box * 0.28f
-        canvas.drawArc(cx - radius, cy - radius, cx + radius, cy + radius, 40f, 280f, false, accentPaint)
+        canvas.drawArc(RectF(cx - radius, cy - radius, cx + radius, cy + radius), 40f, 280f, false, accentPaint)
         val head = box * 0.16f
         triangle(canvas, cx + radius + head * 0.2f, cy, cx + radius - head * 0.4f, cy - head, cx + radius - head * 0.15f, cy + head * 0.55f)
         if (exit in 1..9) {

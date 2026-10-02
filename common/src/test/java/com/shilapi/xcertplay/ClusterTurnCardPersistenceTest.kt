@@ -28,10 +28,10 @@ class ClusterTurnCardPersistenceTest {
 
     @Test fun overlayOffsetsRoundTrip() {
         AirPlayPersistence.saveClusterTurnCardOverlayXPercent(context, 90)
-        AirPlayPersistence.saveClusterTurnCardOverlayYPercent(context, 12)
+        AirPlayPersistence.saveClusterTurnCardOverlayYPercent(context, 15)
         AirPlayPersistence.saveClusterTurnCardOverlaySize(context, CarPlayClusterDisplay.OverlaySize.SMALL)
         assertEquals(90, AirPlayPersistence.loadClusterTurnCardOverlayXPercent(context))
-        assertEquals(12, AirPlayPersistence.loadClusterTurnCardOverlayYPercent(context))
+        assertEquals(15, AirPlayPersistence.loadClusterTurnCardOverlayYPercent(context))
         assertEquals(CarPlayClusterDisplay.OverlaySize.SMALL, AirPlayPersistence.loadClusterTurnCardOverlaySize(context))
     }
 

@@ -500,14 +500,14 @@ object AirPlayPersistence {
             "CENTER" -> 50
             else -> ClusterTurnCardOverlay.DEFAULT_X_PERCENT
         }
-        return snapOverlayPercent(raw, ClusterTurnCardOverlay.xPercents)
+        return ClusterTurnCardOverlay.snap(raw, ClusterTurnCardOverlay.xPercents)
     }
 
     fun saveClusterTurnCardOverlayXPercent(context: Context, percent: Int) {
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
             .putInt(
                 KEY_CLUSTER_TURN_CARD_OVERLAY_X,
-                snapOverlayPercent(percent, ClusterTurnCardOverlay.xPercents),
+                ClusterTurnCardOverlay.snap(percent, ClusterTurnCardOverlay.xPercents),
             ).apply()
         overlaySettingsListener?.invoke()
     }
@@ -515,7 +515,7 @@ object AirPlayPersistence {
     fun loadClusterTurnCardOverlayYPercent(context: Context): Int {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         if (prefs.contains(KEY_CLUSTER_TURN_CARD_OVERLAY_Y)) {
-            return snapOverlayPercent(
+            return ClusterTurnCardOverlay.snap(
                 prefs.getInt(KEY_CLUSTER_TURN_CARD_OVERLAY_Y, ClusterTurnCardOverlay.DEFAULT_Y_PERCENT),
                 ClusterTurnCardOverlay.yPercents,
             )
@@ -527,18 +527,9 @@ object AirPlayPersistence {
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
             .putInt(
                 KEY_CLUSTER_TURN_CARD_OVERLAY_Y,
-                snapOverlayPercent(percent, ClusterTurnCardOverlay.yPercents),
+                ClusterTurnCardOverlay.snap(percent, ClusterTurnCardOverlay.yPercents),
             ).apply()
         overlaySettingsListener?.invoke()
-    }
-
-    private fun snapOverlayPercent(value: Int, range: IntProgression): Int {
-        val first = range.first
-        val last = range.last
-        val step = range.step
-        val clamped = value.coerceIn(minOf(first, last), maxOf(first, last))
-        val snapped = first + ((clamped - first) / step) * step
-        return snapped.coerceIn(minOf(first, last), maxOf(first, last))
     }
 
     fun loadClusterMapScalePercent(context: Context): Int = CarPlayClusterDisplay.STREAM_SCALE_PERCENT.let { default ->
