@@ -1,18 +1,17 @@
-# DiPlay CN 0.2.8.5
+# DiPlay CN 0.2.8.6
 
 基于官方 DiPlay v0.2.8。包名 `com.shihab.diplay.cn`，可与官方版并存。覆盖安装上一版 CN 即可保留设置。
 
 **下载**
 
-- APK：本 Release 附件 `DiPlay-cn-v0.2.8.5-cn.1.apk`
+- APK：本 Release 附件 `DiPlay-cn-v0.2.8.6-cn.1.apk`
 - 完整优化记录：[docs/CN_OPTIMIZATIONS.md](https://github.com/serein-morii/DiPlay-CN/blob/main/docs/CN_OPTIMIZATIONS.md)
 
-**这一版（0.2.8.5）**
+**这一版（0.2.8.6）**
 
-- 转向提示卡位置按 5% 网格吸附。
-- 卡片可在整个仪表盘上左右、上下移动，并选择小 / 中 / 大。
-- 深色玻璃卡 + 几何转向 / 掉头 / 环岛图标。
-- 发版为 release 包，体积与官方接近。
+- 有导航就显示转向卡，直行也显示。
+- 重开后不再把已有导航状态清掉。
+- 转向卡仍可按 5% 步进左右、上下移动，并选择小 / 中 / 大。
 
 **相对官方 0.2.8 一直保留的改动**
 

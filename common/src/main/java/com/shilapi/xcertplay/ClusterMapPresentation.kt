@@ -119,7 +119,7 @@ internal class ClusterMapPresentation(
         }
         root.addView(waitingLabel, FrameLayout.LayoutParams(videoParams))
         turnCardView = ClusterTurnCardView(context).apply { visibility = View.GONE }
-        root.addView(turnCardView, FrameLayout.LayoutParams(videoParams))
+        root.addView(turnCardView, FrameLayout.LayoutParams(-1, -1))
         setContentView(root)
     }
 

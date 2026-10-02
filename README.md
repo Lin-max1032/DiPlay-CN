@@ -6,13 +6,13 @@
 
 > **BYD support scope:** These projects focus on BYD cars. They may work on other brands, but other brands are unsupported and there are no plans to add support or fix brand-specific incompatibilities.
 
-[Download CN 0.2.8.5](https://github.com/serein-morii/DiPlay-CN/releases/tag/v0.2.8.5-cn.1) · [CN optimizations](docs/CN_OPTIMIZATIONS.md) · [Upstream DiPlay](https://github.com/shihabal3amri/DiPlay/releases/tag/v0.2.8)
+[Download CN 0.2.8.6](https://github.com/serein-morii/DiPlay-CN/releases/tag/v0.2.8.6-cn.1) · [CN optimizations](docs/CN_OPTIMIZATIONS.md) · [Upstream DiPlay](https://github.com/shihabal3amri/DiPlay/releases/tag/v0.2.8)
 
 ![DiPlay home](site/assets/home.png)
 
 ## Download
 
-Current CN build: **0.2.8.5** (`versionCode` 31). [APK](https://github.com/serein-morii/DiPlay-CN/releases/download/v0.2.8.5-cn.1/DiPlay-cn-v0.2.8.5-cn.1.apk) · [All CN releases](https://github.com/serein-morii/DiPlay-CN/releases) · [What CN changed](docs/CN_OPTIMIZATIONS.md)
+Current CN build: **0.2.8.6** (`versionCode` 32). [APK](https://github.com/serein-morii/DiPlay-CN/releases/download/v0.2.8.6-cn.1/DiPlay-cn-v0.2.8.6-cn.1.apk) · [All CN releases](https://github.com/serein-morii/DiPlay-CN/releases) · [What CN changed](docs/CN_OPTIMIZATIONS.md)
 
 Install over the previous CN APK to keep settings. Same package name and signing key. Do not replace official DiPlay (`com.shihab.diplay`).
 

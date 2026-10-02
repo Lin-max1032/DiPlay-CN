@@ -4,6 +4,13 @@
 
 覆盖安装：包名始终为 `com.shihab.diplay.cn`，公开 APK 使用同一套 debug 签名。只要新包的 `versionCode` 更大，即可覆盖旧版并保留设置。不能覆盖官方 `com.shihab.diplay`。
 
+## 0.2.8.6 — 2026-10-02
+
+- 版本名 `0.2.8.6`，`versionCode` 32。
+- 有导航就显示转向卡：直行也出卡片；未知动作按直行显示，不再当成「无动作」藏起来。
+- 重开 CarPlay 不再清空已有导航状态，避免地图出来了转向卡却没了。
+- APK：[DiPlay-cn-v0.2.8.6-cn.1.apk](https://github.com/serein-morii/DiPlay-CN/releases/download/v0.2.8.6-cn.1/DiPlay-cn-v0.2.8.6-cn.1.apk)
+
 ## 0.2.8.5 — 2026-10-02
 
 - 版本名 `0.2.8.5`，`versionCode` 31。

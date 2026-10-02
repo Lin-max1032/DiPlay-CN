@@ -36,12 +36,12 @@
       "Optional ADB feature on supported DiLink 5.0: pause the dashboard map stream when its display mode hides the map.",
       "Optional ADB battery reporting for Apple Maps, with warning threshold, charging-connector selection and a checked reconnect action.",
       "Audio playback reliability fixes and clearer dashboard settings.",
-      "CN 0.2.8.5: dashboard turn-card overlay can be moved left/right and up/down in 5% steps; dark glass card with geometric turn icons. Install over the previous CN APK to keep settings."
+      "CN 0.2.8.6: the dashboard turn card stays on whenever navigation is active, including straight-ahead. Reopening CarPlay no longer clears it. Install over the previous CN APK to keep settings."
     ],
     "compat": "Before you try it",
     "compatText": "A public preview, not an Apple-certified product. Authentication uses an experimental accessory identity recovered from public firmware; future acceptance is not guaranteed. Some head units still show stuttering or ignore icon-size changes. Start with 30 fps and HEVC off; try a lower resolution if needed.",
     "update": "Updates & signing",
-    "updateText": "Install over the previous CN APK (com.shihab.diplay.cn) to keep settings. versionCode 31 is higher than earlier CN builds. The CN signing key is unchanged. Do not overwrite the official DiPlay package.",
+    "updateText": "Install over the previous CN APK (com.shihab.diplay.cn) to keep settings. versionCode 32 is higher than earlier CN builds. The CN signing key is unchanged. Do not overwrite the official DiPlay package.",
     "follow": "Get release updates",
     "followText": "News and new builds on Telegram.",
     "telegram": "Follow on Telegram",
@@ -90,12 +90,12 @@
       "ميزة ADB اختيارية على DiLink 5.0 المدعوم: إيقاف بث خريطة العدادات عندما يخفيها وضع العرض.",
       "إرسال بيانات البطارية إلى خرائط Apple اختيارياً عبر ADB، مع حد تحذير ونوع موصل الشحن وإعادة اتصال بعد التحقق.",
       "إصلاحات لاستقرار الصوت وإعدادات أوضح للوحة العدادات.",
-      "CN 0.2.8.5: يمكن تحريك بطاقة الانعطاف على لوحة العدادات بخطوات 5٪، ببطاقة زجاجية داكنة وأسهم هندسية. ثبّت فوق نسخة CN السابقة للاحتفاظ بالإعدادات."
+      "CN 0.2.8.6: تبقى بطاقة الانعطاف ظاهرة طوال الملاحة، بما في ذلك السير مباشرة. إعادة فتح CarPlay لا تمسحها. ثبّت فوق نسخة CN السابقة للاحتفاظ بالإعدادات."
     ],
     "compat": "قبل التجربة",
     "compatText": "نسخة تجريبية عامة غير معتمدة من Apple. تستخدم المصادقة هوية ملحق تجريبية مستخرجة من برنامج ثابت منشور، ولا يُضمن استمرار قبولها مستقبلاً. قد يستمر التقطّع أو عدم تطبيق حجم الأيقونات على بعض الشاشات. ابدأ بمعدل 30 إطاراً مع تعطيل HEVC، وجرّب دقة أقل عند الحاجة.",
     "update": "التحديثات والتوقيع",
-    "updateText": "ثبّت فوق نسخة CN السابقة (com.shihab.diplay.cn) للاحتفاظ بالإعدادات. versionCode 31 أعلى من إصدارات CN السابقة. مفتاح التوقيع لم يتغير. لا تستبدل حزمة DiPlay الرسمية.",
+    "updateText": "ثبّت فوق نسخة CN السابقة (com.shihab.diplay.cn) للاحتفاظ بالإعدادات. versionCode 32 أعلى من إصدارات CN السابقة. مفتاح التوقيع لم يتغير. لا تستبدل حزمة DiPlay الرسمية.",
     "follow": "تابع التحديثات",
     "followText": "الأخبار والإصدارات الجديدة على تيليجرام.",
     "telegram": "تابع على تيليجرام",
@@ -144,12 +144,12 @@
       "Опция с ADB для поддерживаемого DiLink 5.0: приостанавливать поток карты, когда режим приборной панели её скрывает.",
       "Опциональная передача данных батареи в Apple Maps через ADB: порог предупреждения, выбор разъёмов и переподключение после проверки.",
       "Исправления воспроизведения звука и более понятные настройки приборной панели.",
-      "CN 0.2.8.5: карточку поворота можно двигать по панели шагами 5%; тёмная стеклянная карточка с геометрическими стрелками. Установите поверх предыдущего CN APK, чтобы сохранить настройки."
+      "CN 0.2.8.6: карточка поворота остаётся на панели, пока идёт навигация, включая движение прямо. Повторное открытие CarPlay её не сбрасывает. Установите поверх предыдущего CN APK, чтобы сохранить настройки."
     ],
     "compat": "Перед установкой",
     "compatText": "Предварительная версия для открытого тестирования, без сертификации Apple. Используется экспериментальная идентификация аксессуара из общедоступной прошивки; её принятие в будущем не гарантируется. На некоторых устройствах остаются рывки изображения или не применяется размер значков. Начните с 30 кадров/с и выключенного HEVC; при необходимости снизьте разрешение.",
     "update": "Обновления и подпись",
-    "updateText": "Установите поверх предыдущего CN APK (com.shihab.diplay.cn), чтобы сохранить настройки. versionCode 31 выше, чем у прошлых CN-сборок. Ключ подписи не изменился. Не заменяйте официальный пакет DiPlay.",
+    "updateText": "Установите поверх предыдущего CN APK (com.shihab.diplay.cn), чтобы сохранить настройки. versionCode 32 выше, чем у прошлых CN-сборок. Ключ подписи не изменился. Не заменяйте официальный пакет DiPlay.",
     "follow": "Следите за обновлениями",
     "followText": "Новости и новые версии в Telegram.",
     "telegram": "Подписаться в Telegram",
@@ -198,12 +198,12 @@
       "Opción con ADB en DiLink 5.0 compatible: pausar la transmisión del mapa cuando el modo del cuadro lo oculta.",
       "Datos de batería opcionales para Apple Maps mediante ADB, con umbral de aviso, selección de conectores y reconexión tras comprobar los datos.",
       "Mejoras de fiabilidad del audio y ajustes del cuadro más claros.",
-      "CN 0.2.8.5: la tarjeta de giro se mueve por el cuadro en pasos del 5%; tarjeta de cristal oscuro con flechas geométricas. Instala sobre el APK CN anterior para conservar los ajustes."
+      "CN 0.2.8.6: la tarjeta de giro permanece mientras hay navegación, también al seguir de frente. Reabrir CarPlay no la borra. Instala sobre el APK CN anterior para conservar los ajustes."
     ],
     "compat": "Antes de probar",
     "compatText": "Versión preliminar pública sin certificación de Apple. Usa una identidad de accesorio experimental obtenida de firmware público; no se garantiza su aceptación futura. Algunos equipos aún presentan tirones o no aplican los cambios de tamaño de iconos. Empieza con 30 fps y HEVC desactivado; reduce la resolución si hace falta.",
     "update": "Actualizaciones y firma",
-    "updateText": "Instala sobre el APK CN anterior (com.shihab.diplay.cn) para conservar los ajustes. versionCode 31 es mayor que las compilaciones CN previas. La clave de firma no cambia. No sustituyas el paquete oficial de DiPlay.",
+    "updateText": "Instala sobre el APK CN anterior (com.shihab.diplay.cn) para conservar los ajustes. versionCode 32 es mayor que las compilaciones CN previas. La clave de firma no cambia. No sustituyas el paquete oficial de DiPlay.",
     "follow": "Recibe novedades",
     "followText": "Noticias y nuevas versiones en Telegram.",
     "telegram": "Seguir en Telegram",
@@ -252,12 +252,12 @@
       "支持的 DiLink 5.0 可选 ADB 功能：仪表盘显示模式隐藏地图时暂停地图传输。",
       "可选通过 ADB 向 Apple 地图报告电池数据，支持低电量阈值、充电接口选择和检查后重新连接。",
       "修复音频播放稳定性问题，优化仪表盘设置用语。",
-      "CN 0.2.8.5：仪表盘转向提示卡可按 5% 步进左右、上下移动；深色玻璃卡与几何箭头。覆盖安装上一版 CN 即可保留设置。"
+      "CN 0.2.8.6：有导航就显示转向卡，直行也显示；重开 CarPlay 不再把转向卡清掉。覆盖安装上一版 CN 即可保留设置。"
     ],
     "compat": "试用前请了解",
     "compatText": "这是公开预览版，未经 Apple 认证。认证使用从公开固件中提取的实验性配件身份，无法保证未来持续可用。部分车机仍可能出现卡顿或图标大小调整不生效。建议先使用 30 fps 并关闭 HEVC，必要时降低分辨率。",
     "update": "更新与签名",
-    "updateText": "覆盖安装上一版 CN（com.shihab.diplay.cn）即可保留设置。本版 versionCode 为 31，高于此前 CN 构建。签名未改。不要覆盖官方 DiPlay。",
+    "updateText": "覆盖安装上一版 CN（com.shihab.diplay.cn）即可保留设置。本版 versionCode 为 32，高于此前 CN 构建。签名未改。不要覆盖官方 DiPlay。",
     "follow": "获取更新",
     "followText": "在 Telegram 上关注项目消息和新版本。",
     "telegram": "关注 Telegram",

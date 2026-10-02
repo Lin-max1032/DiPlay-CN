@@ -45,8 +45,6 @@ object BydNavigationOutputs {
 
     fun start(context: Context) {
         val app = context.applicationContext
-        synchronized(overlayLock) { overlayRoute.clear() }
-        overlayListener?.invoke(null)
         useStandalone = BydStandaloneHudOutput.available(app)
         if (useStandalone) standalone.start { BydStandaloneNavigationBridge.initialize(app) }
         else {
@@ -80,9 +78,7 @@ object BydNavigationOutputs {
     }
 
     private fun currentOverlay(): ClusterTurnGuidance? = synchronized(overlayLock) {
-        overlayRoute.currentApple()?.let { BydClusterFrame.from(it) }?.takeIf { it.icon != 0 }?.let {
-            ClusterTurnGuidance(it.icon, it.roundaboutExit, it.distanceMeters, it.road)
-        }
+        overlayRoute.currentApple()?.let { ClusterTurnGuidance.from(BydClusterFrame.from(it)) }
     }
 
     /** Best effort while alive; Android does not guarantee callbacks before force-stop. */

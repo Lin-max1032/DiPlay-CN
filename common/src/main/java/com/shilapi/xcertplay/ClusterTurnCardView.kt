@@ -51,9 +51,13 @@ internal class ClusterTurnCardView(context: Context) : View(context) {
     }
 
     fun setGuidance(next: ClusterTurnGuidance?) {
-        if (guidance == next) return
+        if (guidance == next) {
+            visibility = if (next == null) GONE else VISIBLE
+            return
+        }
         guidance = next
         visibility = if (next == null) GONE else VISIBLE
+        bringToFront()
         invalidate()
     }
 
