@@ -416,6 +416,7 @@
     <string name="dashboard_content_map">Карту · типово</string>
     <string name="dashboard_content_turn_card">Картку маневру</string>
     <string name="dashboard_content_map_with_turn_card">Карту з карткою маневру</string>
+    <string name="dashboard_content_map_with_custom_turn_card">Карта з власною карткою маневру</string>
     <string name="turn_card_size">Розмір картки маневру</string>
     <string name="turn_card_horizontal">Картка маневру · горизонтально</string>
     <string name="turn_card_vertical">Картка маневру · вертикально</string>

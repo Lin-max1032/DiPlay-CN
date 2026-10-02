@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      OFFICIAL_APK_URL: https://github.com/shihabal3amri/DiPlay/releases/download/v0.2.8/DiPlay-0.2.8.apk
-      OFFICIAL_APK_SHA256: 9b36a0866608244e422053d6027706b4672d8f2f4a8be9eb7e612411ffb6bf48
+      OFFICIAL_APK_URL: https://github.com/shihabal3amri/DiPlay/releases/download/v0.2.9/DiPlay-0.2.9.apk
+      OFFICIAL_APK_SHA256: f113b534f63542b3df4f7e378f479f85c24bf0c895b12ea22dbbd64a0497db05
     steps:
       - uses: actions/checkout@v4
       - name: Reject credential files in public source
@@ -27,28 +27,28 @@ jobs:
         with:
           packages: platform-tools platforms;android-37.0 build-tools;36.0.0 ndk;28.2.13676358
       - uses: gradle/actions/setup-gradle@v4
-      - name: Provision runtime identity from official v0.2.8 APK
+      - name: Provision runtime identity from official v0.2.9 APK
         shell: bash
         run: |
           set -euo pipefail
-          apk="$RUNNER_TEMP/DiPlay-0.2.8.apk"
+          apk="$RUNNER_TEMP/DiPlay-0.2.9.apk"
           assets="$RUNNER_TEMP/auth-assets"
           curl -fsSL -o "$apk" "$OFFICIAL_APK_URL"
           python3 scripts/extract_official_identity.py "$apk" "$assets" "$OFFICIAL_APK_SHA256"
           echo "DIPLAY_AUTH_ASSETS_DIR=$assets" >> "$GITHUB_ENV"
-      - name: Test and build standalone debug APK
-        run: ./gradlew :shared:testDebugUnitTest :common:testDebugUnitTest :mobile:lintDebug :mobile:assembleStandaloneDebug --stacktrace
+      - name: Test and build standalone release APK
+        run: ./gradlew :shared:testDebugUnitTest :common:testDebugUnitTest :mobile:lintRelease :mobile:assembleStandaloneRelease --stacktrace
       - name: Verify identity is inside the APK and not in git
         run: |
           set -euo pipefail
           python3 scripts/check_public_tree.py
-          python3 scripts/verify_apk_identity.py mobile/build/outputs/apk/debug/mobile-debug.apk
+          python3 scripts/verify_apk_identity.py mobile/build/outputs/apk/release/mobile-release.apk
       - name: Prepare release files
         shell: bash
         run: |
           set -euo pipefail
           apk="DiPlay-cn-${GITHUB_REF_NAME}.apk"
-          cp mobile/build/outputs/apk/debug/mobile-debug.apk "$apk"
+          cp mobile/build/outputs/apk/release/mobile-release.apk "$apk"
           sha256sum "$apk" > "$apk.sha256"
           cp docs/GITHUB_RELEASE.md release-notes.md
       - name: Publish GitHub Release
@@ -64,5 +64,5 @@ jobs:
             "$apk.sha256#SHA-256" \
             --repo "$GITHUB_REPOSITORY" \
             --verify-tag \
-            --title "DiPlay CN 0.2.8" \
+            --title "DiPlay CN 0.2.9.1" \
             --notes-file release-notes.md

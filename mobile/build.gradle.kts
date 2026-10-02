@@ -17,8 +17,8 @@ android {
         applicationId = "com.shihab.diplay.cn"
         minSdk = 28
         targetSdk = 37
-        versionCode = 28
-        versionName = "0.2.9"
+        versionCode = 33
+        versionName = "0.2.9.1"
 
     }
 
@@ -27,13 +27,13 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file(
-                providers.environmentVariable("ANDROID_KEYSTORE_PATH")
-                    .getOrElse("missing-release-keystore.jks"),
-            )
-            storePassword = providers.environmentVariable("ANDROID_KEYSTORE_PASSWORD").getOrElse("")
-            keyAlias = providers.environmentVariable("ANDROID_KEY_ALIAS").getOrElse("")
-            keyPassword = providers.environmentVariable("ANDROID_KEY_PASSWORD").getOrElse("")
+            val storePath = providers.environmentVariable("ANDROID_KEYSTORE_PATH").orNull
+            if (storePath != null) {
+                storeFile = file(storePath)
+                storePassword = providers.environmentVariable("ANDROID_KEYSTORE_PASSWORD").getOrElse("")
+                keyAlias = providers.environmentVariable("ANDROID_KEY_ALIAS").getOrElse("")
+                keyPassword = providers.environmentVariable("ANDROID_KEY_PASSWORD").getOrElse("")
+            }
         }
     }
 
@@ -44,7 +44,13 @@ android {
             optimization {
                 enable = false
             }
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName(
+                if (providers.environmentVariable("ANDROID_KEYSTORE_PATH").orNull != null) {
+                    "release"
+                } else {
+                    "debug"
+                },
+            )
         }
     }
     compileOptions {
@@ -115,4 +121,9 @@ tasks.register("assembleStandaloneDebug") {
     group = "build"
     description = "Build a standalone car-test APK with explicitly provisioned authentication."
     dependsOn(verifyStandaloneAuthentication, "assembleDebug")
+}
+tasks.register("assembleStandaloneRelease") {
+    group = "build"
+    description = "Build a standalone release APK with explicitly provisioned authentication."
+    dependsOn(verifyStandaloneAuthentication, "assembleRelease")
 }

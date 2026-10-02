@@ -1,4 +1,18 @@
-DiPlay CN，基于上游 DiPlay v0.2.8 的简体中文构建。媒体和导航音频流选择恢复为 0–20。
+# DiPlay CN 0.2.9.1
+
+基于官方 DiPlay v0.2.9。包名 `com.shihab.diplay.cn`，可与官方版并存。覆盖安装上一版 CN 即可保留设置。
+
+**下载**
+
+- APK：本 Release 附件 `DiPlay-cn-v0.2.9.1-cn.1.apk`
+- 完整优化记录：[docs/CN_OPTIMIZATIONS.md](https://github.com/serein-morii/DiPlay-CN/blob/main/docs/CN_OPTIMIZATIONS.md)
+
+**这一版（0.2.9.1）**
+
+- 同步官方 0.2.9（浮动地图卡、小组件、乌克兰语等）。
+- 仪表盘四种显示：只地图、只官方转向卡、官方地图+官方玻璃卡、官方地图+可挪的自定义卡。
+- 自定义卡按 2% 步进左右/上下移动，直行也显示；打开 DiPlay 即加载。
+- 可选：主屏幕浮动地图卡与仪表盘同步或分开。
 
 请安装在车机上，不要安装在 iPhone 上。车机必须允许安装 APK。有线连接需要 Android 9 及以上，无线 Wi-Fi Direct 需要 Android 10 及以上。
 
