@@ -1,6 +1,8 @@
-# DiPlay
+# DiPlay CN
 
-**CarPlay for compatible BYD Android head units.** Wired and wireless, with the familiar DiAuto interface. Independent app: `com.shihab.diplay`.
+> 简体中文说明见 [README.zh-CN.md](README.zh-CN.md)。本仓库基于上游 DiPlay `v0.2.8`。
+
+**CarPlay for compatible BYD Android head units.** Wired and wireless, with the familiar DiAuto interface. Independent app: `com.shihab.diplay.cn`.
 
 > **BYD support scope:** These projects focus on BYD cars. They may work on other brands, but other brands are unsupported and there are no plans to add support or fix brand-specific incompatibilities.
 
@@ -35,6 +37,7 @@ Earlier releases were tested on the development DiLink5.1 car: live windshield g
 - Optional ADB wheel-speed and gear reporting lets iPhone navigation estimate movement when GPS is unavailable. Tunnel use still needs validation.
 - Optional iOS 27 video playback on the car screen while parked, with iPhone, touchscreen and steering-wheel controls. Playback closes when the car leaves P.
 - DRM-protected video such as Apple TV+ is not supported; DiPlay is not a licensed FairPlay receiver. Netflix does not support AirPlay.
+- Restore media and navigation audio-stream selection to channels 0–20 (0.2.8 shipped 0–10). Channel 0 stays automatic; 1–20 are legacy stream IDs, including vendor outputs on BYD head units.
 
 ## Documentation
 
