@@ -9,12 +9,13 @@ object BydNavigationOutputs {
     fun onAppOpened(context: Context) {
         if (BydStandaloneHudOutput.available(context)) start(context)
         // Read the battery early, so a reading is ready when CarPlay identifies (see batteryStatus).
-        if (BydOutputSettings.batteryToIphone(context)) BydBatteryStatus.start(context)
+        if (BydOutputSettings.batteryToIphoneActive(context)) BydBatteryStatus.start(context)
     }
     fun setDiagnosticHold(hold: Boolean) { BydStandaloneHudOutput.syntheticHold = hold }
     @Volatile private var useStandalone = false
     @Volatile private var overlayListener: ((ClusterTurnGuidance?) -> Unit)? = null
     private val overlayLock = Any()
+    private var publishedOverlay: ClusterTurnGuidance? = null
     private val overlayRoute = BydHudRouteState(
         staleRouteNs = 120_000_000_000L,
         emptyListHideNs = 8_000_000_000L,
@@ -77,12 +78,25 @@ object BydNavigationOutputs {
     /** Live next-turn state for the dashboard overlay. Called from the iAP2 thread. */
     fun setTurnOverlayListener(listener: ((ClusterTurnGuidance?) -> Unit)?) {
         overlayListener = listener
-        listener?.invoke(currentOverlay())
+        val next = currentOverlay()
+        synchronized(overlayLock) { publishedOverlay = next }
+        listener?.invoke(next)
     }
 
     private fun updateOverlay(frame: Iap2Frame) {
         val change = synchronized(overlayLock) { overlayRoute.accept(frame.messageId, frame.payload) }
-        if (change != BydHudRouteChange.NONE) overlayListener?.invoke(currentOverlay())
+        if (change != BydHudRouteChange.NONE) refreshTurnOverlay()
+    }
+
+    /** Called every second while the presentation owner lives, even without incoming frames. */
+    fun refreshTurnOverlay() {
+        val next = synchronized(overlayLock) {
+            val current = currentOverlay()
+            if (current == publishedOverlay) return
+            publishedOverlay = current
+            current
+        }
+        overlayListener?.invoke(next)
     }
 
     private fun currentOverlay(): ClusterTurnGuidance? = synchronized(overlayLock) {
@@ -98,13 +112,10 @@ object BydNavigationOutputs {
     /** The dashboard song setting changed; applies at once. */
     fun clusterSongChanged(enabled: Boolean) = BydClusterSong.settingChanged(enabled)
 
-    /**
-     * Best effort while alive; Android does not guarantee callbacks before force-stop. The overlay
-     * route cache is deliberately kept: session ends include the brief drops of a wireless
-     * handoff, and clearing here made the turn card vanish until the iPhone happened to resend
-     * the full guidance. The overlay's own staleness window retires a truly dead route.
-     */
+    /** Best effort while alive; Android does not guarantee callbacks before force-stop. */
     fun endNow() {
         standalone.clear(); hud.clear(); cluster.clear(); BydClusterSong.end()
+        synchronized(overlayLock) { overlayRoute.clear() }
+        refreshTurnOverlay()
     }
 }

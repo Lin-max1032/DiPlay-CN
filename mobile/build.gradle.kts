@@ -27,20 +27,19 @@ android {
 
     signingConfigs {
         create("release") {
-            val storePath = providers.environmentVariable("ANDROID_KEYSTORE_PATH").orNull
-            if (storePath != null) {
-                storeFile = file(storePath)
-                storePassword = providers.environmentVariable("ANDROID_KEYSTORE_PASSWORD").getOrElse("")
-                keyAlias = providers.environmentVariable("ANDROID_KEY_ALIAS").getOrElse("")
-                keyPassword = providers.environmentVariable("ANDROID_KEY_PASSWORD").getOrElse("")
-            } else {
-                // Stable CN key: CI runners are ephemeral, so a per-run debug key would change the
-                // signature on every build and users could not install updates over each other.
-                storeFile = rootProject.file("signing/diplay-cn.jks")
-                storePassword = "diplay-cn"
-                keyAlias = "diplaycn"
-                keyPassword = "diplay-cn"
-            }
+            // Stable CN key: CI runners are ephemeral, so a per-run debug key would change the
+            // signature on every build and users could not install updates over each other.
+            storeFile = rootProject.file("signing/diplay-cn.jks")
+            storePassword = "diplay-cn"
+            keyAlias = "diplaycn"
+            keyPassword = "diplay-cn"
+            storeFile = file(
+                providers.environmentVariable("ANDROID_KEYSTORE_PATH")
+                    .getOrElse("missing-release-keystore.jks"),
+            )
+            storePassword = providers.environmentVariable("ANDROID_KEYSTORE_PASSWORD").getOrElse("")
+            keyAlias = providers.environmentVariable("ANDROID_KEY_ALIAS").getOrElse("")
+            keyPassword = providers.environmentVariable("ANDROID_KEY_PASSWORD").getOrElse("")
         }
     }
 

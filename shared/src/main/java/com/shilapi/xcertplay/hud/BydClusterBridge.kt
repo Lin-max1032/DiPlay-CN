@@ -41,7 +41,7 @@ internal object BydClusterBridge {
         } catch (_: PackageManager.NameNotFoundException) {
             false
         }
-        if (!available && (appContext.packageName.endsWith(".hudtest") || appContext.packageName.endsWith(".cn"))) {
+        if (!available && appContext.packageName.endsWith(".hudtest")) {
             factory = BydFactoryNavigationOutput(appContext.applicationContext)
             available = true
         }

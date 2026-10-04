@@ -14,8 +14,8 @@ internal data class ClusterSong(val text: String, val playing: Boolean)
 
 /**
  * The CarPlay song for the dashboard, from iAP2 NowPlayingUpdate (0x5001): title (1) and artist (12)
- * in MediaItemAttributes, playback status in PlaybackAttributes. Updates carry only what changed; a
- * new title replaces the item, so a missing artist then means none.
+ * in MediaItemAttributes, playback status in PlaybackAttributes. Updates carry only what changed;
+ * omitted fields retain their previous values, while an explicitly cleared title forgets the item.
  */
 internal class ClusterSongState {
     private var title: String? = null
@@ -31,8 +31,9 @@ internal class ClusterSongState {
             val nextTitle = runCatching { item.optionalString(TITLE) }.getOrNull()
             if (nextTitle != null) {
                 title = nextTitle
-                artist = runCatching { item.optionalString(ARTIST) }.getOrNull()
-            } else {
+                if (nextTitle.isBlank()) artist = null
+            }
+            if (nextTitle?.isBlank() != true) {
                 runCatching { item.optionalString(ARTIST) }.getOrNull()?.let { artist = it }
             }
         }
@@ -117,7 +118,7 @@ internal object BydClusterSong {
             state.accept(frame)
             state.current().also { if (it == previous) return }
         }
-        if (songWanted(app)) {
+        if (BydOutputSettings.clusterSong(app)) {
             if (song == null) stop(app) else show(app, song)
         }
     }
@@ -125,19 +126,8 @@ internal object BydClusterSong {
     /** The setting changed: show the current song now, or stop the card DiPlay set. */
     fun settingChanged(enabled: Boolean) {
         val app = context ?: return
-        if (songWanted(app)) synchronized(state) { state.current() }?.let { show(app, it) } else stop(app)
+        if (enabled) synchronized(state) { state.current() }?.let { show(app, it) } else stop(app)
     }
-
-    /**
-     * The song card needs both its own switch and the master navigation switch, so turning the
-     * master off stops every write to the instrument cluster. Also give up after a failed write:
-     * a dashboard that rejects the write once keeps rejecting it, and hammering an unhappy
-     * instrument service is how some firmwares fall back to their simple mode.
-     */
-    private fun songWanted(app: Context): Boolean =
-        BydOutputSettings.enabled(app) && BydOutputSettings.clusterSong(app) && !givenUp.get()
-
-    private val givenUp = java.util.concurrent.atomic.AtomicBoolean(false)
 
     /** The session ended: forget the song and stop the card DiPlay set. */
     fun end() {
@@ -181,11 +171,7 @@ internal object BydClusterSong {
             ?: return false
         val failed = output.lineSequence().map { it.trim() }.filter { it.contains('=') }
             .any { line -> line.substringAfter('=').trim().toIntOrNull() != 0 }
-        if (failed) {
-            givenUp.set(true)
-            synchronized(state) { wanted = null }
-            Log.w(TAG, "dashboard write failed once; stopping song writes for this session: ${output.trim().take(160)}")
-        }
+        if (failed) Log.w(TAG, "dashboard write failed: ${output.trim().take(160)}")
         return !failed
     }
 }
