@@ -12,9 +12,6 @@ internal class StreamReceiveStats(
     private var packets = 0
     private var bytes = 0L
     private var maxReadNs = 0L
-    private var readsOver250Ms = 0
-    private var seqGapAfterReadOver250Ms = 0
-    private var seqMissingAfterReadOver250Ms = 0
     private var lastReceivedNs = 0L
     private var maxInterArrivalNs = 0L
     private var maxProcessNs = 0L
@@ -31,9 +28,7 @@ internal class StreamReceiveStats(
 
     fun received(size: Int, sequence: Int? = null, timestamp: Int? = null) {
         processingStart = nowNs()
-        val readNs = processingStart - readStart
-        maxReadNs = maxOf(maxReadNs, readNs)
-        if (readNs >= LONG_READ_NS) readsOver250Ms++
+        maxReadNs = maxOf(maxReadNs, processingStart - readStart)
         if (lastReceivedNs != 0L) {
             maxInterArrivalNs = maxOf(maxInterArrivalNs, processingStart - lastReceivedNs)
         }
@@ -47,10 +42,6 @@ internal class StreamReceiveStats(
                 forwardGapPackets += delta
                 if (delta > 0) {
                     sequenceGapEvents++
-                    if (readNs >= LONG_READ_NS) {
-                        seqGapAfterReadOver250Ms++
-                        seqMissingAfterReadOver250Ms += delta
-                    }
                     maxSequenceGap = maxOf(maxSequenceGap, delta)
                     lastSequenceGap = "expected=$expected received=$sequence missing=$delta " +
                         "previousRtpTs=${lastTimestamp?.toUnsignedLong() ?: "unknown"} " +
@@ -75,17 +66,11 @@ internal class StreamReceiveStats(
             "processMaxUs=${maxProcessNs / 1000} seqForwardGaps=$forwardGapPackets " +
             "lateOrDuplicate=$lateOrDuplicate interArrivalMaxMs=${maxInterArrivalNs / 1_000_000} " +
             "seqGapEvents=$sequenceGapEvents seqGapMax=$maxSequenceGap " +
-            "seqGapLast=[$lastSequenceGap] seqGapAtMs=$lastSequenceGapAtMs ended=$ended " +
-            "windowMs=${(now - windowStart).coerceAtLeast(0) / 1_000_000} " +
-            "readsOver250Ms=$readsOver250Ms seqGapAfterReadOver250Ms=$seqGapAfterReadOver250Ms " +
-            "seqMissingAfterReadOver250Ms=$seqMissingAfterReadOver250Ms") }
+            "seqGapLast=[$lastSequenceGap] seqGapAtMs=$lastSequenceGapAtMs ended=$ended") }
         windowStart = now
         packets = 0
         bytes = 0
         maxReadNs = 0
-        readsOver250Ms = 0
-        seqGapAfterReadOver250Ms = 0
-        seqMissingAfterReadOver250Ms = 0
         maxInterArrivalNs = 0
         maxProcessNs = 0
         forwardGapPackets = 0
@@ -97,7 +82,5 @@ internal class StreamReceiveStats(
     }
 
     private fun Int.toUnsignedLong(): Long = toLong() and 0xffff_ffffL
-
-    private companion object { const val LONG_READ_NS = 250_000_000L }
 
 }

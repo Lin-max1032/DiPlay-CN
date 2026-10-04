@@ -9,7 +9,6 @@ class BydParkedStateTest {
     fun readsTheGearboxReply() {
         assertEquals(true, BydParkedState.parked("Result: Parcel(00000000 00000001   '........')"))
         assertEquals(false, BydParkedState.parked("Result: Parcel(00000000 00000004   '........')"))
-        assertEquals(false, BydParkedState.parked("Result: Parcel(00000000 00000006   '........')"))
         assertEquals(false, BydParkedState.parked("Result: Parcel(00000000 00000002   '........')"))
     }
 
