@@ -1,0 +1,157 @@
+Sun Oct  4 00:35:25 UTC 2026
+--- compile/lint errors ---
+239:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydAdbSettingsUiTest.kt:63:51 Unresolved reference 'auto_car_hotspot_title'.
+240:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydAdbSettingsUiTest.kt:67:83 Unresolved reference 'vehicle_data_mode_default'.
+241:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydAdbSettingsUiTest.kt:85:116 Unresolved reference 'auto_car_hotspot_title'.
+242:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydAdbSettingsUiTest.kt:111:60 Unresolved reference 'vehicle_data_mode'.
+243:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:73:73 Unresolved reference 'advanced_vehicle_data'.
+244:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:79:65 Unresolved reference 'advanced_vehicle_data'.
+245:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:81:73 Unresolved reference 'advanced_vehicle_data_description'.
+246:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:82:90 Unresolved reference 'vehicle_data_mode_default'.
+247:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:108:65 Unresolved reference 'advanced_vehicle_data'.
+248:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:119:65 Unresolved reference 'advanced_vehicle_data'.
+249:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:121:73 Unresolved reference 'hide_advanced_vehicle_data'.
+250:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:134:65 Unresolved reference 'advanced_vehicle_data'.
+251:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:185:65 Unresolved reference 'advanced_vehicle_data'.
+252:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:188:73 Unresolved reference 'probe_vehicle_data_again'.
+253:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:197:65 Unresolved reference 'advanced_vehicle_data'.
+254:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:206:65 Unresolved reference 'advanced_vehicle_data'.
+255:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:282:65 Unresolved reference 'advanced_vehicle_data'.
+256:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:288:90 Unresolved reference 'vehicle_field_gear'.
+257:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:289:65 Unresolved reference 'replace_saved_vehicle_data_anyway'.
+258:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:385:65 Unresolved reference 'advanced_vehicle_data'.
+259:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:393:73 Unresolved reference 'replace_saved_vehicle_data_anyway'.
+260:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:405:65 Unresolved reference 'advanced_vehicle_data'.
+261:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:415:65 Unresolved reference 'replace_saved_vehicle_data_anyway'.
+262:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:420:52 Unresolved reference 'vehicle_probe_failed'.
+263:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:421:45 Unresolved reference 'vehicle_probe_snapshot_changed'.
+264:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:435:65 Unresolved reference 'advanced_vehicle_data'.
+265:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:439:65 Unresolved reference 'replace_saved_vehicle_data_anyway'.
+266:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:443:52 Unresolved reference 'vehicle_probe_failed'.
+267:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:469:65 Unresolved reference 'advanced_vehicle_data'.
+268:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:502:65 Unresolved reference 'advanced_vehicle_data'.
+269:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:509:90 Unresolved reference 'vehicle_probe_allowed_once'.
+270:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:522:65 Unresolved reference 'advanced_vehicle_data'.
+271:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:529:91 Unresolved reference 'vehicle_probe_allowed_once'.
+272:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:543:90 Unresolved reference 'vehicle_data_mode_default'.
+273:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:572:65 Unresolved reference 'advanced_vehicle_data'.
+274:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:617:65 Unresolved reference 'advanced_vehicle_data'.
+275:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:637:65 Unresolved reference 'advanced_vehicle_data'.
+276:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:660:65 Unresolved reference 'advanced_vehicle_data'.
+277:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:678:65 Unresolved reference 'advanced_vehicle_data'.
+278:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/BydVehicleDataSettingsTest.kt:752:66 Unresolved reference 'vehicle_data_mode'.
+279:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/CarHotspotSwitchTest.kt:88:50 Unresolved reference 'hotspot_permission_granted'.
+280:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/CarHotspotSwitchTest.kt:112:50 Unresolved reference 'hotspot_permission_failed'.
+281:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/CarHotspotSwitchTest.kt:274:62 Unresolved reference 'auto_car_hotspot_title'.
+282:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:40:63 Unresolved reference 'loadWifiP2pPreferredChannel'.
+283:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:49:63 Unresolved reference 'loadWifiP2pPreferredChannel'.
+284:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:60:46 Unresolved reference 'loadWifiP2pPreferredChannel'.
+285:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:64:46 Unresolved reference 'loadWifiP2pPreferredChannel'.
+286:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:72:63 Unresolved reference 'loadWifiP2pPreferredChannel'.
+287:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:78:67 Unresolved reference 'loadWifiP2pPreferredChannel'.
+288:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:81:63 Unresolved reference 'loadWifiP2pPreferredChannel'.
+289:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:85:28 Unresolved reference 'saveWifiP2pPreferredChannel'.
+290:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/test/java/com/shilapi/xcertplay/WifiDirectChannelSettingsTest.kt:107:80 Unresolved reference 'wifi_direct_channel_summary'.
+291-
+292-> Task :common:compileDebugUnitTestKotlin FAILED
+293-WARNING: A restricted method in java.lang.System has been called
+294-WARNING: java.lang.System::load has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/home/runner/.gradle/caches/modules-2/files-2.1/org.conscrypt/conscrypt-openjdk-uber/2.6.2/65c5977595ee9cc12e6017b9d43b1d2e3d1bab63/conscrypt-openjdk-uber-2.6.2.jar)
+--
+313:FAILURE: Build completed with 2 failures.
+314-
+315-1: Task failed with an exception.
+316------------
+317:* What went wrong:
+318-Execution failed for task ':common:compileDebugUnitTestKotlin' (registered by plugin 'com.android.internal.library').
+319-> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+320-   > Compilation error. See log for more details
+321-
+--
+515:* What went wrong:
+516-Execution failed for task ':shared:testDebugUnitTest'.
+517-> There were failing tests. See the report at: file:///home/runner/work/DiPlay-CN/DiPlay-CN/shared/build/reports/tests/testDebugUnitTest/index.html
+518-
+519-* Try:
+--- log tail ---
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:51)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:29)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:39)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:42)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:24)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:28)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:76)
+	at org.gradle.internal.Either$Right.fold(Either.java:176)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:74)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:49)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:70)
+	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:32)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:37)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:63)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:34)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:79)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:65)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:99)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.execute(ValidateStep.java:65)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.executeMutable(CaptureMutableStateBeforeExecutionStep.java:86)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:65)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:45)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeWithNonEmptySources(SkipEmptyMutableWorkStep.java:210)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:90)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:53)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:77)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:43)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$executeMutable$0(AssignMutableWorkspaceStep.java:34)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:305)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:30)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:21)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:56)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:38)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:68)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
+	... 65 more
+
+==============================================================================
+
+BUILD FAILED in 3m 17s
+149 actionable tasks: 149 executed
+Configuration cache entry stored.
+--- failed tests ---
+./shared/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.airplay.CarPlayClusterDisplayTest.xml:5:<failure message="java.lang.AssertionError: expected:&lt;[(1920, 720), (1600, 600), (1280, 480), (2392, 896)]&gt; but was:&lt;[(1920, 720), (1600, 600), (1280, 480), (2408, 904)]&gt;"
