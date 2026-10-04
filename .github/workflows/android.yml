@@ -36,7 +36,7 @@ jobs:
             echo '--- log tail ---'
             tail -80 gradle.log
             echo '--- failed tests ---'
-            grep -rn --include='TEST-*.xml' -o '<failure message="[^"]*"' . | head -40 || true
+            grep -rn --include='TEST-*.xml' -B8 '<failure' . | grep -E 'testcase name|<failure' | head -60 || true
             grep -rn --include='TEST-*.xml' -o '<error message="[^"]*"' . | head -20 || true
           } > failure.txt
           git config user.name 'github-actions[bot]'
