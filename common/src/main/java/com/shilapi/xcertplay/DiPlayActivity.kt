@@ -1472,7 +1472,7 @@ class DiPlayActivity : ComponentActivity() {
     private fun showVehicleDataSettings(card: LinearLayout, capabilities: BydVehicleCapabilities?) {
         if (capabilities == null || capabilities.batterySupported) {
             toggle(card, getString(R.string.bt_suspend_during_carplay), getString(R.string.bt_suspend_during_carplay_description),
-                AirPlayPersistence.loadBtSuspendDuringCarplay(this)) {
+                AirPlayPersistence.loadBtSuspendDuringCarplay(this), enabled = !adbSwitchChangePending) {
                 AirPlayPersistence.saveBtSuspendDuringCarplay(this, it)
                 if (it) checkAdbState(mayAsk = true)
             }
