@@ -36,17 +36,8 @@ jobs:
             echo '--- log tail ---'
             tail -80 gradle.log
             echo '--- failed tests ---'
-            find . -path '*/build/test-results/*' -name 'TEST-*.xml' -print0 | while IFS= read -r -d '' f; do
-              python3 - "$f" <<'PY2'
-import sys, xml.etree.ElementTree as ET
-try: root = ET.parse(sys.argv[1]).getroot()
-except Exception: sys.exit()
-for tc in root.iter('testcase'):
-    for bad in list(tc):
-        if bad.tag in ('failure', 'error'):
-            print(f"{tc.get('classname')}#{tc.get('name')}: {bad.get('message', '')[:400]}")
-PY2
-            done
+            grep -rn --include='TEST-*.xml' -o '<failure message="[^"]*"' . | head -40 || true
+            grep -rn --include='TEST-*.xml' -o '<error message="[^"]*"' . | head -20 || true
           } > failure.txt
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
