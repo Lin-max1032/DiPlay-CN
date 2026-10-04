@@ -1,0 +1,139 @@
+Sun Oct  4 00:57:15 UTC 2026
+--- compile/lint errors ---
+579:FAILURE: Build completed with 2 failures.
+580-
+581-1: Task failed with an exception.
+582------------
+583:* What went wrong:
+584-Execution failed for task ':shared:testDebugUnitTest'.
+585-> There were failing tests. See the report at: file:///home/runner/work/DiPlay-CN/DiPlay-CN/shared/build/reports/tests/testDebugUnitTest/index.html
+586-
+587-* Try:
+--
+735:* What went wrong:
+736-Execution failed for task ':common:testDebugUnitTest'.
+737-> There were failing tests. See the report at: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/build/reports/tests/testDebugUnitTest/index.html
+738-
+739-* Try:
+--- log tail ---
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:51)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:29)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:39)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:42)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:24)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:28)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:76)
+	at org.gradle.internal.Either$Right.fold(Either.java:176)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:74)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:49)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:70)
+	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:32)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:37)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:63)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:34)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:79)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:65)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:99)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.execute(ValidateStep.java:65)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.executeMutable(CaptureMutableStateBeforeExecutionStep.java:86)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:65)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:45)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeWithNonEmptySources(SkipEmptyMutableWorkStep.java:210)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:90)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:53)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:77)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:43)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$executeMutable$0(AssignMutableWorkspaceStep.java:34)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:305)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:30)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:21)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:56)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:38)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:68)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
+	... 65 more
+
+==============================================================================
+
+BUILD FAILED in 5m 2s
+157 actionable tasks: 157 executed
+Configuration cache entry stored.
+--- failed tests ---
+./shared/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.airplay.CarPlayClusterDisplayTest.xml:5:<failure message="java.lang.AssertionError: expected:&lt;[(1920, 720), (1600, 600), (1280, 480), (2392, 896)]&gt; but was:&lt;[(1920, 720), (1600, 600), (1280, 480), (2408, 904)]&gt;"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:5:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:37:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:69:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:101:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:133:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:165:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:197:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:229:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:261:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:293:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:325:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:357:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:389:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.CarHotspotSwitchTest.xml:421:<failure message="java.lang.NoSuchMethodException: com.shilapi.xcertplay.DiPlayActivity.renderBydAdbControls(android.widget.LinearLayout,com.shilapi.xcertplay.adb.LocalAdb$Access)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:5:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:36:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchMethodException: java.lang.Object.probeVehicleData(boolean)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:78:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchFieldException: vehicleProbeOutcome"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:119:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchMethodException: java.lang.Object.selectVehicleDataMode(boolean)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:161:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchFieldException: bydVehicleAdvancedExpanded"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:202:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchFieldException: vehicleProbeOutcome"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:243:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:274:<failure message="java.lang.AssertionError: expected:&lt;400&gt; but was:&lt;0&gt;"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:310:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:341:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:372:<failure message="java.lang.AssertionError"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:406:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:437:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchFieldException: adbSwitchChangePending"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:478:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:509:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchMethodException: java.lang.Object.probeVehicleData(boolean)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:551:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchMethodException: java.lang.Object.probeVehicleData(boolean)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:593:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchMethodException: java.lang.Object.probeVehicleData(boolean)"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:635:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:666:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:697:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:728:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:759:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:790:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:821:<failure message="java.lang.RuntimeException: java.lang.RuntimeException: java.lang.NoSuchFieldException: bydVehicleAdvancedExpanded"
+./common/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.BydVehicleDataSettingsTest.xml:862:<failure message="java.util.NoSuchElementException: Sequence contains no element matching the predicate."
