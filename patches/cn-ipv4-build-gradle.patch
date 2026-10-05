@@ -1,5 +1,5 @@
 diff --git a/mobile/build.gradle.kts b/mobile/build.gradle.kts
-index 2bfb09a..7d87650 100644
+index 2bfb09a..ad5911e 100644
 --- a/mobile/build.gradle.kts
 +++ b/mobile/build.gradle.kts
 @@ -17,8 +17,8 @@ android {
@@ -8,8 +8,8 @@ index 2bfb09a..7d87650 100644
          targetSdk = 37
 -        versionCode = 72
 -        versionName = "0.2.12-cn.8"
-+        versionCode = 74
-+        versionName = "0.2.12-cn.8-ipv4.1"
++        versionCode = 75
++        versionName = "0.2.12-cn.8-ipv4.2"
  
      }
  
