@@ -569,6 +569,7 @@
     <string name="settings_gesture_fingers_label">Open settings · swipe-down fingers</string>
     <string name="settings_gesture_fingers_option">%1$d fingers</string>
     <string name="settings_gesture_fingers_hint">Pick a finger count your head unit does not already use. BYD takes three-finger swipe-down for its air-conditioning panel.</string>
+    <string name="open_full_settings">Open full DiPlay settings</string>
     <string name="auto_car_hotspot_title">Automatically turn on the car hotspot</string>
     <string name="auto_car_hotspot_description">Starts the saved car hotspot when DiPlay opens. Turning this on automatically requests the required permissions through ADB; allow the prompt on the car screen. Enable “Open after the car starts” for boot startup. Keeps the hotspot name and password and never turns it off.</string>
     <string name="hotspot_control_missing">Hotspot control permission is missing. Set it up through ADB or open the hotspot in car settings.</string>
@@ -654,7 +655,7 @@
     <string name="cluster_size_smallest">Smaller · more map, finer detail</string>
     <string name="app_rename_title">App name (car app list)</string>
     <string name="app_rename_note">Switches between preset names; Android cannot set free text. Takes effect at once — if the car list still shows the old name, reopen the app list or restart the head unit.</string>
-    <string name="update_auto_found">New version %1$s available · tap Check for updates to install.</string>
+    <string name="update_auto_found">New version %1$s available.</string>
     <string name="turn_card_theme">Turn card theme</string>
     <string name="turn_card_theme_auto">Auto · follow the head unit</string>
     <string name="turn_card_theme_day">Always day</string>
@@ -672,6 +673,9 @@
     <string name="cluster_small_window_horizontal">Small-window marker · left/right</string>
     <string name="cluster_small_window_vertical">Small-window marker · up/down</string>
     <string name="cluster_small_window_hint">Default is three steps (30 %) right of centre. Adjust to wherever the small window sits on your cluster.</string>
+    <string name="cluster_small_window_access_ok">Usage Access granted · the cluster is followed automatically on the next connection.</string>
+    <string name="cluster_small_window_access_missing">Auto mode needs the Usage Access permission to see the cluster\'s small-map state — grant it, then reconnect.</string>
+    <string name="cluster_small_window_grant_access">Grant Usage Access</string>
     <string name="download_and_install">Download and install</string>
     <string name="up_to_date">You are on the latest version.</string>
     <string name="update_available">New version %1$s available (%2$s).</string>
@@ -681,8 +685,9 @@
     <string name="update_channel_github">GitHub direct</string>
     <string name="update_channel_mirror1">Acceleration mirror (gh-proxy.com)</string>
     <string name="update_channel_mirror2">Acceleration mirror (ghproxy.net)</string>
-    <string name="update_check_failed">Could not reach GitHub: %1$s. Try again later.</string>
+    <string name="update_check_failed">Could not reach the update server: %1$s. Try again later.</string>
     <string name="update_download_failed">Download failed: %1$s. Check the car\'s network connection.</string>
     <string name="update_downloading">Downloading update…</string>
     <string name="update_install_failed">No installer opened. Allow DiPlay to install unknown apps, then try again.</string>
+    <string name="update_allow_unknown">Allow DiPlay to install unknown apps in the screen that just opened, then come back — the install continues automatically.</string>
 </resources>

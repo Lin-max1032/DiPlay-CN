@@ -541,6 +541,7 @@
     <string name="settings_gesture_fingers_label">Abrir ajustes · dedos del deslizamiento</string>
     <string name="settings_gesture_fingers_option">%1$d dedos</string>
     <string name="settings_gesture_fingers_hint">Elige un número de dedos que tu unidad no use ya. BYD reserva el deslizamiento con tres dedos para el panel del aire acondicionado.</string>
+    <string name="open_full_settings">Abrir los ajustes completos de DiPlay</string>
     <string name="auto_car_hotspot_title">Activar automáticamente el punto de acceso del coche</string>
     <string name="auto_car_hotspot_description">Activa el punto de acceso guardado al abrir DiPlay. El interruptor solicita automáticamente los permisos necesarios mediante ADB; acepta el aviso en la pantalla del coche. Activa la apertura de DiPlay al arrancar para iniciarlo tras el encendido. Conserva el nombre y la contraseña y nunca apaga el punto de acceso.</string>
     <string name="hotspot_control_missing">Falta el permiso de control del punto de acceso. Concédelo mediante ADB o actívalo en los ajustes del coche.</string>
@@ -596,7 +597,7 @@
     <string name="cluster_size_smallest">Más pequeño · más mapa y detalle fino</string>
     <string name="app_rename_title">Nombre de la app (lista del coche)</string>
     <string name="app_rename_note">Cambia entre nombres predefinidos; Android no admite texto libre. Se aplica al instante; si la lista sigue mostrando el nombre anterior, vuelve a abrirla o reinicia la unidad.</string>
-    <string name="update_auto_found">Nueva versión %1$s disponible · toca Comprobar actualizaciones para instalar.</string>
+    <string name="update_auto_found">Nueva versión %1$s disponible.</string>
     <string name="turn_card_theme">Tema de la tarjeta de giro</string>
     <string name="turn_card_theme_auto">Automático · seguir a la unidad</string>
     <string name="turn_card_theme_day">Siempre día</string>
@@ -614,6 +615,9 @@
     <string name="cluster_small_window_horizontal">Marcador en ventana pequeña · izquierda / derecha</string>
     <string name="cluster_small_window_vertical">Marcador en ventana pequeña · arriba / abajo</string>
     <string name="cluster_small_window_hint">Predeterminado: tres pasos (30 %) a la derecha del centro. Ajusta según dónde esté la ventana en tu cuadro.</string>
+    <string name="cluster_small_window_access_ok">Acceso de uso concedido · el cuadro se sigue automáticamente en la próxima conexión.</string>
+    <string name="cluster_small_window_access_missing">El modo automático necesita el permiso de acceso de uso para ver el estado del mapa pequeño; concédelo y reconecta.</string>
+    <string name="cluster_small_window_grant_access">Conceder acceso de uso</string>
     <string name="boot_start_repair">Arranque automático · reparación ADB (experimental)</string>
     <string name="boot_start_repair_desc">Algunos firmwares bloquean los receptores de arranque de terceros. Esto pide a la unidad, por su propio enlace ADB, eximir a DiPlay de los límites en segundo plano para que llegue el aviso de arranque. Una vez; repetir tras una actualización de firmware.</string>
     <string name="boot_start_repair_result">Reparación de arranque automático:%1$s</string>
@@ -638,8 +642,9 @@
     <string name="update_channel_mirror1">Espejo de aceleración (gh-proxy.com)</string>
     <string name="update_channel_mirror2">Espejo de aceleración (ghproxy.net)</string>
     <string name="update_channel_github">GitHub directo</string>
-    <string name="update_check_failed">No se pudo conectar con GitHub: %1$s. Prueba más tarde.</string>
+    <string name="update_check_failed">No se pudo conectar con el servidor de actualizaciones: %1$s. Prueba más tarde.</string>
     <string name="update_download_failed">Error al descargar: %1$s. Comprueba la conexión.</string>
     <string name="update_downloading">Descargando actualización…</string>
     <string name="update_install_failed">No se abrió el instalador. Permite a DiPlay instalar apps desconocidas e inténtalo de nuevo.</string>
+    <string name="update_allow_unknown">Permite que DiPlay instale apps de origen desconocido en la página que se acaba de abrir y vuelve: la instalación continúa sola.</string>
 </resources>

@@ -554,6 +554,7 @@
     <string name="settings_gesture_fingers_label">Відкрити налаштування · кількість пальців</string>
     <string name="settings_gesture_fingers_option">%1$d пальців</string>
     <string name="settings_gesture_fingers_hint">Виберіть кількість пальців, яку не використовує головний пристрій. BYD резервує свайп трьома пальцями вниз під панель кондиціонера.</string>
+    <string name="open_full_settings">Відкрити всі налаштування DiPlay</string>
     <string name="auto_car_hotspot_title">Автоматично вмикати точку доступу авто</string>
     <string name="auto_car_hotspot_description">Вмикає збережену точку доступу під час відкриття DiPlay. Перемикач автоматично запитує потрібні дозволи через ADB; підтвердьте запит на екрані авто. Для запуску після завантаження ввімкніть відкриття DiPlay після запуску авто. Назва й пароль зберігаються, точка доступу автоматично не вимикається.</string>
     <string name="hotspot_control_missing">Немає дозволу керування точкою доступу. Надайте його через ADB або ввімкніть точку доступу в налаштуваннях авто.</string>
@@ -608,7 +609,7 @@
     <string name="cluster_size_smallest">Менше · більше карти та дрібніші деталі</string>
     <string name="app_rename_title">Назва програми (список програм авто)</string>
     <string name="app_rename_note">Перемикання між готовими назвами; довільний текст в Android неможливий. Застосовується одразу — якщо у списку лишилася стара назва, відкрийте список знову або перезапустіть головний пристрій.</string>
-    <string name="update_auto_found">Доступна нова версія %1$s · натисніть «Перевірити оновлення» для встановлення.</string>
+    <string name="update_auto_found">Доступна нова версія %1$s.</string>
     <string name="turn_card_theme">Тема картки повороту</string>
     <string name="turn_card_theme_auto">Авто · слідувати за головним пристроєм</string>
     <string name="turn_card_theme_day">Завжди день</string>
@@ -626,6 +627,9 @@
     <string name="cluster_small_window_horizontal">Мітка в малому вікні · ліворуч / праворуч</string>
     <string name="cluster_small_window_vertical">Мітка в малому вікні · вгору / вниз</string>
     <string name="cluster_small_window_hint">Стандартно три кроки (30 %) праворуч від центру. Налаштуйте під фактичне положення вікна на вашій панелі.</string>
+    <string name="cluster_small_window_access_ok">Доступ до використання надано · панель відстежується автоматично з наступного підключення.</string>
+    <string name="cluster_small_window_access_missing">Автоматичному режиму потрібен доступ до статистики використання, щоб бачити стан малої карти — надайте його та перепідключіться.</string>
+    <string name="cluster_small_window_grant_access">Надати доступ до використання</string>
     <string name="boot_start_repair">Автозапуск · ремонт ADB (експериментально)</string>
     <string name="boot_start_repair_desc">Деякі прошивки блокують сторонні приймачі завантаження. Ця дія через власний ADB автомобіля виводить DiPlay з фонових обмежень, щоб широкомовлення завантаження доходило. Один раз; повторіть після оновлення прошивки.</string>
     <string name="boot_start_repair_result">Ремонт автозапуску:%1$s</string>
@@ -650,8 +654,9 @@
     <string name="update_channel_mirror1">Дзеркало прискорення (gh-proxy.com)</string>
     <string name="update_channel_mirror2">Дзеркало прискорення (ghproxy.net)</string>
     <string name="update_channel_github">GitHub безпосередньо</string>
-    <string name="update_check_failed">Немає звʼязку з GitHub: %1$s. Спробуйте пізніше.</string>
+    <string name="update_check_failed">Немає звʼязку із сервером оновлень: %1$s. Спробуйте пізніше.</string>
     <string name="update_download_failed">Не вдалося завантажити: %1$s. Перевірте мережу.</string>
     <string name="update_downloading">Завантаження оновлення…</string>
     <string name="update_install_failed">Інсталятор не відкрився. Дозвольте DiPlay встановлювати невідомі застосунки та повторіть.</string>
+    <string name="update_allow_unknown">Дозвольте DiPlay встановлювати невідомі програми на сторінці, що відкрилася, і поверніться — встановлення продовжиться саме.</string>
 </resources>

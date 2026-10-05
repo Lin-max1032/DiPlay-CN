@@ -221,6 +221,13 @@ class DiPlayActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
+        // Returning from the "install unknown apps" page finishes a pending update install.
+        pendingInstallApk?.let { apk ->
+            if (AppUpdate.canInstall(this)) {
+                pendingInstallApk = null
+                if (!AppUpdate.install(this, apk)) toast(getString(R.string.update_install_failed))
+            }
+        }
         if (Build.VERSION.SDK_INT < 33 && AppLocale.preference(this) != languagePreferenceAtCreate) {
             recreate()
             return
@@ -811,6 +818,19 @@ class DiPlayActivity : ComponentActivity() {
                             card.addView(label(getString(R.string.cluster_small_window_marker_description), 14, MUTED).apply {
                                 setPadding(0, dp(8), 0, dp(6))
                             })
+                            if (AirPlayPersistence.loadClusterSmallWindowMode(this) == 2 &&
+                                !DiLink51ClusterMonitor.hasAccess(this)) {
+                                card.addView(label(getString(R.string.cluster_small_window_access_missing), 14, WARNING)
+                                    .apply { setPadding(0, dp(4), 0, dp(4)) })
+                                card.addView(button(getString(R.string.cluster_small_window_grant_access), false) {
+                                    runCatching {
+                                        openSystem(Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS))
+                                    }
+                                }, matchButton(6, 56))
+                            } else if (AirPlayPersistence.loadClusterSmallWindowMode(this) == 2) {
+                                card.addView(label(getString(R.string.cluster_small_window_access_ok), 14, MUTED)
+                                    .apply { setPadding(0, dp(4), 0, dp(4)) })
+                            }
                             if (AirPlayPersistence.loadClusterSmallWindowMode(this) != 0) {
                                 card.addView(overlaySliderRow(
                                     getString(R.string.cluster_small_window_horizontal),
@@ -891,7 +911,13 @@ class DiPlayActivity : ComponentActivity() {
         languageSettings(content)
     }
 
+    /** The last release a dialog was offered for, so auto and manual checks never double-pop. */
+    private var offeredUpdateTag: String? = null
+
     private fun offerUpdate(release: AppUpdate.Release) {
+        val tag = AppUpdate.normalizeTag(release.tag)
+        if (offeredUpdateTag == tag) return
+        offeredUpdateTag = tag
         val notes = AppUpdate.plainNotes(release.notes).ifBlank { getString(R.string.update_notes_missing) }
         // Channels like Gitee often omit the asset size; then the brackets are dropped entirely.
         val headline = if (release.apkBytes > 0) {
@@ -912,6 +938,9 @@ class DiPlayActivity : ComponentActivity() {
             .show()
     }
 
+    /** A downloaded APK waiting for the "install unknown apps" grant; installed on resume. */
+    private var pendingInstallApk: File? = null
+
     private fun downloadUpdate(release: AppUpdate.Release) {
         val progress = android.app.ProgressDialog(this).apply {
             setMessage(getString(R.string.update_downloading))
@@ -928,9 +957,7 @@ class DiPlayActivity : ComponentActivity() {
             onDone = { file ->
                 runOnUiThread {
                     progress.dismiss()
-                    if (!AppUpdate.install(this, file)) {
-                        toast(getString(R.string.update_install_failed))
-                    }
+                    installOrUpdate(file)
                 }
             },
             onError = { message ->
@@ -942,6 +969,19 @@ class DiPlayActivity : ComponentActivity() {
         )
     }
 
+    /** The car silently drops the installer intent without the per-app unknown-sources grant. */
+    private fun installOrUpdate(file: File) {
+        if (!AppUpdate.canInstall(this)) {
+            pendingInstallApk = file
+            toast(getString(R.string.update_allow_unknown))
+            AppUpdate.openInstallPermission(this)
+            return
+        }
+        if (!AppUpdate.install(this, file)) {
+            toast(getString(R.string.update_install_failed))
+        }
+    }
+
     private fun about(content: LinearLayout) {
         content.addView(label(getString(R.string.diplay), 40, TEXT, true))
         content.addView(label(getString(R.string.carplay_at_home_in_your_car), 20, MUTED).apply { setPadding(0, dp(8), 0, dp(24)) })
@@ -951,12 +991,13 @@ class DiPlayActivity : ComponentActivity() {
                 setPadding(0, dp(10), 0, 0)
             }
             card.addView(updateStatus)
-            // A silent background check pre-fills the status line; the button still installs.
+            // A silent background check opens the update dialog as soon as a newer build is found.
             AppUpdate.autoCheck(this) { release ->
                 runOnUiThread {
                     if (release == null || isFinishing || isDestroyed) return@runOnUiThread
                     if (AppUpdate.isAvailable(release, this)) {
                         updateStatus.text = getString(R.string.update_auto_found, release.tag)
+                        offerUpdate(release)
                     }
                 }
             }
