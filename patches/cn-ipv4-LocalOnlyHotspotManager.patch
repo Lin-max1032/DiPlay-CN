@@ -1,0 +1,41 @@
+diff --git a/shared/src/main/java/com/shilapi/xcertplay/network/LocalOnlyHotspotManager.kt b/shared/src/main/java/com/shilapi/xcertplay/network/LocalOnlyHotspotManager.kt
+index b53ca4a..a34738a 100644
+--- a/shared/src/main/java/com/shilapi/xcertplay/network/LocalOnlyHotspotManager.kt
++++ b/shared/src/main/java/com/shilapi/xcertplay/network/LocalOnlyHotspotManager.kt
+@@ -620,21 +620,25 @@ class LocalOnlyHotspotManager(context: Context, private val onDiagnostic: (Strin
+                 .firstNotNullOfOrNull { it.toEui64MacAddress() }
+ 
+     private fun NetworkInterface.hotspotAddress(): InetAddress? {
+-        var ipv4: InetAddress? = null
++        // IPv4 first (see WirelessHostAddress): scoped link-local is only a fallback.
++        var linkLocal: InetAddress? = null
+         for (address in Collections.list(inetAddresses)) {
+-            if (address is Inet6Address && address.isLinkLocalAddress) {
+-                if (address.scopeId == index) return address
+-                try {
+-                    return Inet6Address.getByAddress(null, address.address, this)
+-                } catch (_: UnknownHostException) {
+-                    continue
+-                }
++            if (address is Inet4Address && !address.isLoopbackAddress) {
++                return address
+             }
+-            if (address is Inet4Address && !address.isLoopbackAddress && ipv4 == null) {
+-                ipv4 = address
++            if (address is Inet6Address && address.isLinkLocalAddress && linkLocal == null) {
++                linkLocal = if (address.scopeId == index) {
++                    address
++                } else {
++                    try {
++                        Inet6Address.getByAddress(null, address.address, this)
++                    } catch (_: UnknownHostException) {
++                        null
++                    }
++                }
+             }
+         }
+-        return ipv4
++        return linkLocal
+     }
+ 
+     private fun ensureStartActive(attempt: StartAttempt) {
