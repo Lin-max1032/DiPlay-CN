@@ -1,0 +1,33 @@
+name: Release IPv4-only APK
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply IPv4 patches
+        run: |
+          for p in patches/*.patch; do
+            if git apply --check "$p" 2>/dev/null; then
+              git apply "$p"
+              echo "applied $p"
+            else
+              echo "skip(already applied?) $p"
+            fi
+          done
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-37.0 build-tools;36.0.0 ndk;28.2.13676358
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build and release
+        run: bash scripts/ci-ipv4.sh
