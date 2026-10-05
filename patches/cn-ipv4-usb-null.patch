@@ -1,0 +1,145 @@
+diff --git a/shared/src/main/java/com/shilapi/xcertplay/orchestration/CarPlayController.kt b/shared/src/main/java/com/shilapi/xcertplay/orchestration/CarPlayController.kt
+index 4a7b57f..e90b9a2 100644
+--- a/shared/src/main/java/com/shilapi/xcertplay/orchestration/CarPlayController.kt
++++ b/shared/src/main/java/com/shilapi/xcertplay/orchestration/CarPlayController.kt
+@@ -178,7 +178,9 @@ class CarPlayController(
+     private val appContext = context.applicationContext
+     private val diagnosticAttempt = diagnosticAttempts.incrementAndGet()
+     private val diagnosticRun = AtomicInteger()
+-    private val usbManager = context.getSystemService(UsbManager::class.java)
++    // Some head-unit ROMs never start the framework USB service (getSystemService returns null);
++    // wireless CarPlay must keep working there, so every USB use below degrades gracefully.
++    private val usbManager: UsbManager? = context.getSystemService(UsbManager::class.java)
+     private val bluetoothAdapter =
+         appContext.getSystemService(BluetoothManager::class.java)?.adapter
+     private val iphoneHost = IphoneUsbHost(
+@@ -868,7 +870,7 @@ class CarPlayController(
+         val check = object : Runnable {
+             override fun run() {
+                 if (closed || phase != Phase.MFI || generation != permissionPollGeneration) return
+-                if (usbManager.hasPermission(device)) {
++                if (usbManager?.hasPermission(device) == true) {
+                     onCh341Permission(Ch341UsbHost.PermissionResult.Granted(device))
+                     return
+                 }
+@@ -1747,7 +1749,7 @@ class CarPlayController(
+         val check = object : Runnable {
+             override fun run() {
+                 if (closed || generation != permissionPollGeneration) return
+-                if (usbManager.hasPermission(device)) {
++                if (usbManager?.hasPermission(device) == true) {
+                     onIphonePermission(IphoneUsbHost.PermissionResult.Granted(device))
+                     return
+                 }
+@@ -1841,7 +1843,7 @@ class CarPlayController(
+                 " status=${function.statusIn?.address?.let { "0x${it.toString(16)}" } ?: "none"}" +
+                 " in=0x${function.bulkIn.address.toString(16)} out=0x${function.bulkOut.address.toString(16)}",
+         )
+-        val connection = usbManager.openDevice(device)
++        val connection = usbManager?.openDevice(device)
+             ?: throw IphoneUsbException.DeviceUnavailable("Could not open the iPhone NCM connection")
+         return NcmUsbBridge.open(connection, function)
+     }
+diff --git a/shared/src/main/java/com/shilapi/xcertplay/transport/Ch341UsbHost.kt b/shared/src/main/java/com/shilapi/xcertplay/transport/Ch341UsbHost.kt
+index eaa3155..9bd7e5f 100644
+--- a/shared/src/main/java/com/shilapi/xcertplay/transport/Ch341UsbHost.kt
++++ b/shared/src/main/java/com/shilapi/xcertplay/transport/Ch341UsbHost.kt
+@@ -25,7 +25,7 @@ import java.util.concurrent.Executor
+  */
+ class Ch341UsbHost(
+     context: Context,
+-    private val usbManager: UsbManager,
++    private val usbManager: UsbManager?,
+     private val matcher: Ch341DeviceMatcher,
+     private val permissionAction: String = "${context.packageName}.CH341_USB_PERMISSION",
+ ) {
+@@ -46,14 +46,14 @@ class Ch341UsbHost(
+     }
+ 
+     fun discover(): List<UsbDevice> =
+-        usbManager.deviceList.values.filter { matcher.matches(it.vendorId, it.productId) }
++        usbManager?.deviceList.orEmpty().values.filter { matcher.matches(it.vendorId, it.productId) }
+ 
+     @Throws(I2cTransportException::class)
+     fun requestPermission(device: UsbDevice): PermissionRequest {
+         requireConfiguredDevice(device)
+-        if (usbManager.hasPermission(device)) return PermissionRequest.AlreadyGranted(device)
++        if (usbManager?.hasPermission(device) == true) return PermissionRequest.AlreadyGranted(device)
+ 
+-        usbManager.requestPermission(device, permissionPendingIntent())
++        usbManager?.requestPermission(device, permissionPendingIntent())
+         return PermissionRequest.Requested(device)
+     }
+ 
+@@ -98,12 +98,12 @@ class Ch341UsbHost(
+ 
+     private fun open(device: UsbDevice): Ch341UsbSession {
+         requireConfiguredDevice(device)
+-        if (!usbManager.hasPermission(device)) {
++        if (usbManager?.hasPermission(device) != true) {
+             throw I2cTransportException.PermissionDenied("USB permission has not been granted")
+         }
+         val endpoints = findBulkEndpoints(device)
+             ?: throw I2cTransportException.DeviceUnavailable("No USB interface has both bulk IN and OUT endpoints")
+-        val connection = usbManager.openDevice(device)
++        val connection = usbManager?.openDevice(device)
+             ?: throw I2cTransportException.DeviceUnavailable("UsbManager could not open the CH341 device")
+ 
+         if (!connection.claimInterface(endpoints.usbInterface, true)) {
+diff --git a/shared/src/main/java/com/shilapi/xcertplay/transport/IphoneUsbHost.kt b/shared/src/main/java/com/shilapi/xcertplay/transport/IphoneUsbHost.kt
+index da3fc74..1d676ca 100644
+--- a/shared/src/main/java/com/shilapi/xcertplay/transport/IphoneUsbHost.kt
++++ b/shared/src/main/java/com/shilapi/xcertplay/transport/IphoneUsbHost.kt
+@@ -65,7 +65,7 @@ class IphoneUsbMatcher private constructor(
+  */
+ class IphoneUsbHost(
+     context: Context,
+-    private val usbManager: UsbManager,
++    private val usbManager: UsbManager?,
+     private val matcher: IphoneUsbMatcher,
+     private val permissionAction: String = "${context.packageName}.IPHONE_USB_PERMISSION",
+ ) {
+@@ -94,14 +94,14 @@ class IphoneUsbHost(
+     }
+ 
+     fun discover(): List<UsbDevice> =
+-        usbManager.deviceList.values.filter { matcher.matches(it.vendorId, it.productId) }
++        usbManager?.deviceList.orEmpty().values.filter { matcher.matches(it.vendorId, it.productId) }
+ 
+     @Throws(IphoneUsbException::class)
+     fun requestPermission(device: UsbDevice): PermissionRequest {
+         requireConfiguredDevice(device)
+-        if (usbManager.hasPermission(device)) return PermissionRequest.AlreadyGranted(device)
++        if (usbManager?.hasPermission(device) == true) return PermissionRequest.AlreadyGranted(device)
+ 
+-        usbManager.requestPermission(device, permissionPendingIntent())
++        usbManager?.requestPermission(device, permissionPendingIntent())
+         return PermissionRequest.Requested(device)
+     }
+ 
+@@ -212,10 +212,10 @@ class IphoneUsbHost(
+         operation: (UsbDeviceConnection) -> TransitionResult,
+     ): TransitionResult = try {
+         requireConfiguredDevice(device)
+-        if (!usbManager.hasPermission(device)) {
++        if (usbManager?.hasPermission(device) != true) {
+             throw IphoneUsbException.PermissionDenied("USB permission has not been granted")
+         }
+-        val connection = usbManager.openDevice(device)
++        val connection = usbManager?.openDevice(device)
+             ?: throw IphoneUsbException.DeviceUnavailable("UsbManager could not open the iPhone")
+         try {
+             operation(connection)
+@@ -232,10 +232,10 @@ class IphoneUsbHost(
+ 
+     private fun openIap2UsbSession(device: UsbDevice): Iap2UsbSession {
+         requireConfiguredDevice(device)
+-        if (!usbManager.hasPermission(device)) {
++        if (usbManager?.hasPermission(device) != true) {
+             throw IphoneUsbException.PermissionDenied("USB permission has not been granted")
+         }
+-        val connection = usbManager.openDevice(device)
++        val connection = usbManager?.openDevice(device)
+             ?: throw IphoneUsbException.DeviceUnavailable("UsbManager could not open the iPhone")
+         var claimedInterface: UsbInterface? = null
+         try {
