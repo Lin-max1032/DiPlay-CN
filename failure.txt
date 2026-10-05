@@ -1,0 +1,194 @@
+Mon Oct  5 02:11:31 UTC 2026
+--- compile/lint errors ---
+253:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:937:28 Unresolved reference 'safeAreaKey'.
+254:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:953:17 Unresolved reference 'safeAreaKey'.
+255:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:969:21 Unresolved reference 'safeAreaKey'.
+256:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:993:47 Unresolved reference 'decodeHex'.
+257:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:993:70 Unresolved reference 'decodeHex'.
+258:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:997:67 Unresolved reference 'toHex'.
+259:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:998:65 Unresolved reference 'toHex'.
+260:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1008:91 Unresolved reference 'decodeHex'.
+261:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1018:65 Unresolved reference 'toHex'.
+262:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1039:51 Unresolved reference 'decodeHex'.
+263:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1040:51 Unresolved reference 'decodeHex'.
+264:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1041:49 Unresolved reference 'decodeHex'.
+265:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1042:47 Unresolved reference 'decodeHex'.
+266:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1043:49 Unresolved reference 'decodeHex'.
+267:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1044:47 Unresolved reference 'decodeHex'.
+268:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1056:78 Unresolved reference 'toHex'.
+269:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1057:78 Unresolved reference 'toHex'.
+270:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1058:76 Unresolved reference 'toHex'.
+271:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1059:74 Unresolved reference 'toHex'.
+272:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1060:76 Unresolved reference 'toHex'.
+273:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1061:74 Unresolved reference 'toHex'.
+274:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1142:5 Modifier 'private' is not applicable to 'local function'.
+275:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1144:5 Modifier 'private' is not applicable to 'local function'.
+276:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1151:5 Modifier 'private' is not applicable to 'local function'.
+277:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AirPlayPersistence.kt:1153:2 Syntax error: Missing '}.
+278:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/AppUpdate.kt:87:39 Unresolved reference 'loadUpdateChannel'.
+279:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:501:46 Unresolved reference 'loadIdentity'.
+280:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:573:45 Unresolved reference 'loadRightHandDrive'.
+281:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:574:41 Unresolved reference 'loadHideTopBar'.
+282:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:575:44 Unresolved reference 'loadHideBottomBar'.
+283:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:576:50 Unresolved reference 'loadSafeAreaDrawOutside'.
+284:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:766:54 Unresolved reference 'loadHideTopBar'.
+285:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:767:57 Unresolved reference 'loadHideBottomBar'.
+286:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:900:37 Unresolved reference 'loadClusterTurnCardOverlaySizePercent'.
+287:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:914:32 Unresolved reference 'loadClusterTurnCardOpacityPercent'.
+288:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:918:64 Unresolved reference 'loadClusterTurnCardOpacityPercent'.
+289:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2020:28 Unresolved reference 'saveRightHandDrive'.
+290:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2021:28 Unresolved reference 'saveHideTopBar'.
+291:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2022:28 Unresolved reference 'saveHideBottomBar'.
+292:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2023:28 Unresolved reference 'saveSafeAreaDrawOutside'.
+293:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2029:32 Unresolved reference 'loadCustomAirPlayIconFile'.
+294:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2036:64 Unresolved reference 'loadSafeAreaRect'.
+295:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2047:36 Unresolved reference 'saveSafeAreaRect'.
+296:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2054:37 Unresolved reference 'clearSafeAreaRect'.
+297:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2063:36 Unresolved reference 'saveCustomAirPlayIcon'.
+298:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2064:37 Unresolved reference 'clearCustomAirPlayIcon'.
+299:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:2471:40 Unresolved reference 'clearCustomAirPlayIcon'.
+300:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3367:46 Unresolved reference 'loadSafeAreaRect'.
+301:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3408:32 Unresolved reference 'loadCustomAirPlayIconFile'.
+302:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3414:32 Unresolved reference 'clearCustomAirPlayIcon'.
+303:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3437:41 Unresolved reference 'loadCustomAirPlayIconFile'.
+304:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3440:60 Unresolved reference 'absolutePath'.
+305:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3442:36 Unresolved reference 'clearCustomAirPlayIcon'.
+306:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3471:42 Unresolved reference 'loadSafeAreaRect'.
+307:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3477:25 Unresolved reference 'width'.
+308:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3477:40 Unresolved reference 'height'.
+309:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3477:56 Unresolved reference 'left'.
+310:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3477:70 Unresolved reference 'top'.
+311:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3493:42 Unresolved reference 'loadSafeAreaRect'.
+312:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3522:28 Unresolved reference 'saveSafeAreaRect'.
+313:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3537:28 Unresolved reference 'clearSafeAreaRect'.
+314:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3546:63 Unresolved reference 'loadSafeAreaRect'.
+315:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3840:43 Unresolved reference 'loadPairings'.
+316:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3840:64 Cannot infer type for this parameter. Specify it explicitly.
+317:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3840:68 Cannot infer type for this parameter. Specify it explicitly.
+318:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3841:32 Unresolved reference 'savePairing'.
+319:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3852:51 Unresolved reference 'loadLockdownRecord'.
+320:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3853:61 Unresolved reference 'saveLockdownRecord'.
+321:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt:3854:52 Unresolved reference 'clearLockdownRecord'.
+322:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:557:150 Unresolved reference 'loadRightHandDrive'.
+323:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:557:197 Unresolved reference 'saveRightHandDrive'.
+324:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:559:49 Unresolved reference 'loadHideTopBar'.
+325:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:560:52 Unresolved reference 'loadHideBottomBar'.
+326:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:561:60 Unresolved reference 'saveHideTopBar'.
+327:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:562:63 Unresolved reference 'saveHideBottomBar'.
+328:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:732:52 Unresolved reference 'loadClusterTurnCardOverlaySizePercent'.
+329:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:734:79 Unresolved reference 'saveClusterTurnCardOverlaySizePercent'.
+330:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:738:52 Unresolved reference 'loadClusterTurnCardOpacityPercent'.
+331:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:740:79 Unresolved reference 'saveClusterTurnCardOpacityPercent'.
+332:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:970:36 Unresolved reference 'loadUpdateChannel'.
+333:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:971:36 Unresolved reference 'saveUpdateChannel'.
+334:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:976:57 Unresolved reference 'loadUpdateChannel'.
+335:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:1921:36 Unresolved reference 'loadBtSuspendDuringCarplay'.
+336:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:1922:36 Unresolved reference 'saveBtSuspendDuringCarplay'.
+337:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:1925:36 Unresolved reference 'loadBtSuspendDuringCarplay'.
+338:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:1928:55 Unresolved reference 'loadBtSuspendDelaySeconds'.
+339:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/DiPlayActivity.kt:1929:40 Unresolved reference 'saveBtSuspendDelaySeconds'.
+340:e: file:///home/runner/work/DiPlay-CN/DiPlay-CN/common/src/main/java/com/shilapi/xcertplay/ImageCropActivity.kt:155:32 Unresolved reference 'saveCustomAirPlayIcon'.
+341-WARNING: A restricted method in java.lang.System has been called
+342-WARNING: java.lang.System::load has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/home/runner/.gradle/caches/modules-2/files-2.1/org.conscrypt/conscrypt-openjdk-uber/2.6.2/65c5977595ee9cc12e6017b9d43b1d2e3d1bab63/conscrypt-openjdk-uber-2.6.2.jar)
+343-WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+344-WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+--
+357:FAILURE: Build completed with 2 failures.
+358-
+359-1: Task failed with an exception.
+360------------
+361:* What went wrong:
+362-Execution failed for task ':common:compileDebugKotlin' (registered by plugin 'com.android.internal.library').
+363-> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+364-   > Compilation error. See log for more details
+365-
+--
+559:* What went wrong:
+560-Execution failed for task ':shared:testDebugUnitTest'.
+561-> There were failing tests. See the report at: file:///home/runner/work/DiPlay-CN/DiPlay-CN/shared/build/reports/tests/testDebugUnitTest/index.html
+562-
+563-* Try:
+--- log tail ---
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:51)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:29)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.executeMutable(RemovePreviousOutputsStep.java:39)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:42)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:24)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.executeMutable(ResolveInputChangesStep.java:28)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:76)
+	at org.gradle.internal.Either$Right.fold(Either.java:176)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:74)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:49)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.executeMutable(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:70)
+	at org.gradle.internal.execution.steps.ResolveMutableCachingStateStep.executeDelegate(ResolveMutableCachingStateStep.java:32)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:69)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:37)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:63)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.executeMutable(ResolveChangesStep.java:34)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:79)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.executeDelegate(ValidateStep.java:65)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:99)
+	at org.gradle.internal.execution.steps.ValidateStep$Mutable.execute(ValidateStep.java:65)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.executeMutable(CaptureMutableStateBeforeExecutionStep.java:86)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:65)
+	at org.gradle.internal.execution.steps.CaptureMutableStateBeforeExecutionStep.execute(CaptureMutableStateBeforeExecutionStep.java:45)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeWithNonEmptySources(SkipEmptyMutableWorkStep.java:210)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:90)
+	at org.gradle.internal.execution.steps.SkipEmptyMutableWorkStep.executeMutable(SkipEmptyMutableWorkStep.java:53)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.executeMutable(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:77)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.executeMutable(HandleStaleOutputsStep.java:43)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$executeMutable$0(AssignMutableWorkspaceStep.java:34)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:305)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:30)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.executeMutable(AssignMutableWorkspaceStep.java:21)
+	at org.gradle.internal.execution.steps.MutableStep.execute(MutableStep.java:26)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:56)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:38)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:68)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
+	... 65 more
+
+==============================================================================
+
+BUILD FAILED in 34s
+210 actionable tasks: 13 executed, 197 up-to-date
+Configuration cache entry reused.
+--- failed tests ---
+./shared/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.hud.ClusterTurnOverlayExpiryTest.xml-4-  <testcase name="endingTheSessionClearsTheTurnCardImmediately" classname="com.shilapi.xcertplay.hud.ClusterTurnOverlayExpiryTest" time="0.04">
+./shared/build/test-results/testDebugUnitTest/TEST-com.shilapi.xcertplay.hud.ClusterTurnOverlayExpiryTest.xml:5:    <failure message="java.lang.AssertionError: expected null, but was:&lt;BydAppleManeuver(distanceMeters=150, type=1, drivingSide=0, road=, remainingSeconds=null, remainingMeters=null, arrivalEpochSeconds=null)&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected null, but was:&lt;BydAppleManeuver(distanceMeters=150, type=1, drivingSide=0, road=, remainingSeconds=null, remainingMeters=null, arrivalEpochSeconds=null)&gt;
