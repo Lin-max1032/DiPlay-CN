@@ -1,5 +1,5 @@
 diff --git a/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt b/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
-index 07da971..8dfd4b3 100644
+index 07da971..219139d 100644
 --- a/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
 +++ b/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
 @@ -12,6 +12,7 @@ import android.graphics.Bitmap
@@ -10,7 +10,16 @@ index 07da971..8dfd4b3 100644
  import android.graphics.SurfaceTexture
  import android.graphics.Typeface
  import android.graphics.drawable.GradientDrawable
-@@ -261,6 +262,8 @@ class CarPlayHostActivity : ComponentActivity() {
+@@ -31,6 +32,8 @@ import android.util.Log
+ import android.view.Gravity
+ import android.view.MotionEvent
+ import android.view.Surface
++import android.view.SurfaceHolder
++import android.view.SurfaceView
+ import android.view.TextureView
+ import android.view.KeyEvent
+ import android.view.View
+@@ -261,6 +264,8 @@ class CarPlayHostActivity : ComponentActivity() {
          }
  
      private var videoView: TextureView? = null
@@ -19,7 +28,7 @@ index 07da971..8dfd4b3 100644
      private var pictureBinding: CarPlayPicture.Binding? = null
      private var picturePanel: View? = null
      private var picturePanelGeneration = 0
-@@ -526,6 +529,10 @@ class CarPlayHostActivity : ComponentActivity() {
+@@ -526,6 +531,10 @@ class CarPlayHostActivity : ComponentActivity() {
          locationPermissionAvailable = hasFineLocationPermission()
          setContentView(buildContentView())
          applyFullscreenMode()
@@ -30,7 +39,7 @@ index 07da971..8dfd4b3 100644
          onBackPressedDispatcher.addCallback(
              this,
              object : OnBackPressedCallback(true) {
-@@ -4167,10 +4174,27 @@ class CarPlayHostActivity : ComponentActivity() {
+@@ -4167,10 +4176,27 @@ class CarPlayHostActivity : ComponentActivity() {
          val view = videoView ?: return
          if (viewWidth <= 0 || viewHeight <= 0) return
          val content = contentRect(viewWidth, viewHeight)
@@ -62,7 +71,7 @@ index 07da971..8dfd4b3 100644
          if (sidePanelShown) placeSidePanel(viewWidth, viewHeight)
      }
  
-@@ -4437,6 +4461,49 @@ class CarPlayHostActivity : ComponentActivity() {
+@@ -4437,6 +4463,49 @@ class CarPlayHostActivity : ComponentActivity() {
          }
      }
  
