@@ -1,0 +1,167 @@
+diff --git a/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt b/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
+index 07da971..8dfd4b3 100644
+--- a/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
++++ b/common/src/main/java/com/shilapi/xcertplay/CarPlayHostActivity.kt
+@@ -12,6 +12,7 @@ import android.graphics.Bitmap
+ import android.graphics.BitmapFactory
+ import android.graphics.Color
+ import android.graphics.Matrix
++import android.graphics.Rect
+ import android.graphics.SurfaceTexture
+ import android.graphics.Typeface
+ import android.graphics.drawable.GradientDrawable
+@@ -261,6 +262,8 @@ class CarPlayHostActivity : ComponentActivity() {
+         }
+ 
+     private var videoView: TextureView? = null
++    private var softwareVideoSurface: SurfaceView? = null
++    private var softwareVideoRect: Rect? = null
+     private var pictureBinding: CarPlayPicture.Binding? = null
+     private var picturePanel: View? = null
+     private var picturePanelGeneration = 0
+@@ -526,6 +529,10 @@ class CarPlayHostActivity : ComponentActivity() {
+         locationPermissionAvailable = hasFineLocationPermission()
+         setContentView(buildContentView())
+         applyFullscreenMode()
++        // Some head-unit ROMs never hardware-accelerate application windows, which leaves a
++        // TextureView without a SurfaceTexture. Decide once the first traversal has attached
++        // the window: keep the texture path when it works, otherwise fall back to SurfaceView.
++        videoView?.post { ensureVideoSurfaceForWindow() }
+         onBackPressedDispatcher.addCallback(
+             this,
+             object : OnBackPressedCallback(true) {
+@@ -4167,10 +4174,27 @@ class CarPlayHostActivity : ComponentActivity() {
+         val view = videoView ?: return
+         if (viewWidth <= 0 || viewHeight <= 0) return
+         val content = contentRect(viewWidth, viewHeight)
+-        view.setTransform(Matrix().apply {
+-            setScale(content.width / viewWidth, content.height / viewHeight)
+-            postTranslate(content.left, content.top)
+-        })
++        val surfaceView = softwareVideoSurface
++        if (surfaceView != null) {
++            // A SurfaceView cannot scale its buffer; it letterboxes by position and size instead.
++            val left = content.left.coerceIn(0f, (viewWidth - 1).toFloat()).toInt()
++            val top = content.top.coerceIn(0f, (viewHeight - 1).toFloat()).toInt()
++            val right = (content.left + content.width).coerceIn((left + 1).toFloat(), viewWidth.toFloat()).toInt()
++            val bottom = (content.top + content.height).coerceIn((top + 1).toFloat(), viewHeight.toFloat()).toInt()
++            val rect = Rect(left, top, right, bottom)
++            if (rect != softwareVideoRect) {
++                softwareVideoRect = rect
++                surfaceView.layoutParams = FrameLayout.LayoutParams(rect.width(), rect.height()).apply {
++                    leftMargin = rect.left
++                    topMargin = rect.top
++                }
++            }
++        } else {
++            view.setTransform(Matrix().apply {
++                setScale(content.width / viewWidth, content.height / viewHeight)
++                postTranslate(content.left, content.top)
++            })
++        }
+         if (sidePanelShown) placeSidePanel(viewWidth, viewHeight)
+     }
+ 
+@@ -4437,6 +4461,49 @@ class CarPlayHostActivity : ComponentActivity() {
+         }
+     }
+ 
++    /**
++     * Head-unit ROMs such as WUTONG S311_ICA never hardware-accelerate application windows.
++     * In such a window a TextureView silently never receives a SurfaceTexture, so the video
++     * pipeline would have no output surface at all. A SurfaceView composites through
++     * SurfaceFlinger without window-level hardware acceleration, so switch to it as fallback.
++     */
++    private fun ensureVideoSurfaceForWindow() {
++        val view = videoView ?: return
++        if (softwareVideoSurface != null || currentSurface != null) return
++        appendLog("Video window hardwareAccelerated=${view.isHardwareAccelerated}")
++        if (view.isHardwareAccelerated) return
++        val parent = view.parent as? FrameLayout ?: return
++        appendLog("Falling back to SurfaceView video output (window is not hardware accelerated)")
++        val surfaceView = SurfaceView(this)
++        surfaceView.holder.addCallback(object : SurfaceHolder.Callback {
++            override fun surfaceCreated(holder: SurfaceHolder) {
++                val surface = holder.surface
++                currentSurface = surface
++                currentSurfaceTexture = null
++                appendLog("SurfaceView video surface created")
++                attachSurface(surface)
++                videoView?.let { updateVideoLayout(it.width, it.height) }
++            }
++
++            override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
++                videoView?.let { updateVideoLayout(it.width, it.height) }
++            }
++
++            override fun surfaceDestroyed(holder: SurfaceHolder) {
++                sink?.clearSurface(SCREEN_TYPE_MAIN, holder.surface)
++                sink?.clearSurface(SCREEN_TYPE_ALT, holder.surface)
++                if (currentSurface === holder.surface) currentSurface = null
++                appendLog("SurfaceView video surface destroyed")
++            }
++        })
++        parent.addView(
++            surfaceView,
++            parent.indexOfChild(view).coerceAtLeast(0),
++            view.layoutParams ?: FrameLayout.LayoutParams(-1, -1),
++        )
++        softwareVideoSurface = surfaceView
++    }
++
+     private fun attachSurface(surface: Surface) {
+         sink?.setSurface(SCREEN_TYPE_MAIN, surface)
+         if (AirPlayPersistence.loadClusterMapEnabled(this)) {
+diff --git a/mobile/build.gradle.kts b/mobile/build.gradle.kts
+index a3f26e3..5683500 100644
+--- a/mobile/build.gradle.kts
++++ b/mobile/build.gradle.kts
+@@ -17,8 +17,8 @@ android {
+         applicationId = "com.shihab.diplay"
+         minSdk = 28
+         targetSdk = 37
+-        versionCode = 32
+-        versionName = "0.2.13"
++        versionCode = 33
++        versionName = "0.2.13-sv1"
+ 
+     }
+ 
+@@ -27,13 +27,21 @@ android {
+ 
+     signingConfigs {
+         create("release") {
+-            storeFile = file(
+-                providers.environmentVariable("ANDROID_KEYSTORE_PATH")
+-                    .getOrElse("missing-release-keystore.jks"),
+-            )
+-            storePassword = providers.environmentVariable("ANDROID_KEYSTORE_PASSWORD").getOrElse("")
+-            keyAlias = providers.environmentVariable("ANDROID_KEY_ALIAS").getOrElse("")
+-            keyPassword = providers.environmentVariable("ANDROID_KEY_PASSWORD").getOrElse("")
++            val storePath = providers.environmentVariable("ANDROID_KEYSTORE_PATH").orNull
++            if (storePath != null) {
++                storeFile = file(storePath)
++                storePassword = providers.environmentVariable("ANDROID_KEYSTORE_PASSWORD").getOrElse("")
++                keyAlias = providers.environmentVariable("ANDROID_KEY_ALIAS").getOrElse("")
++                keyPassword = providers.environmentVariable("ANDROID_KEY_PASSWORD").getOrElse("")
++            } else {
++                // Stable CI key: runners are ephemeral, so a per-run key would change the signature
++                // on every build and updates could not install over each other. This throwaway test
++                // keystore guards no secret and is not the device signing key.
++                storeFile = rootProject.file("signing/diplay-cn.jks")
++                storePassword = "diplay-cn"
++                keyAlias = "diplaycn"
++                keyPassword = "diplay-cn"
++            }
+         }
+     }
+ 
+@@ -118,3 +126,8 @@ tasks.register("assembleStandaloneDebug") {
+     description = "Build a standalone car-test APK with explicitly provisioned authentication."
+     dependsOn(verifyStandaloneAuthentication, "assembleDebug")
+ }
++tasks.register("assembleStandaloneRelease") {
++    group = "build"
++    description = "Build a standalone release APK with explicitly provisioned authentication."
++    dependsOn(verifyStandaloneAuthentication, "assembleRelease")
++}
