@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-OFFICIAL_APK_URL="https://github.com/shihabal3amri/DiPlay/releases/download/v0.2.12/DiPlay-0.2.12.apk"
-OFFICIAL_APK_SHA256="840f2d62fc2c7d10250555b99444da7e0539be3834f635c6aa22ecbd635f7cf4"
+OFFICIAL_APK_URL="https://github.com/shihabal3amri/DiPlay/releases/download/v0.2.13/DiPlay-0.2.13.apk"
+OFFICIAL_APK_SHA256="aed9eac786e7c0e80a2929dc2f0c2e1d0df318ca8fd83ae7c2988a98bb4cd7e6"
 
 apk="$RUNNER_TEMP/official.apk"
 assets="$RUNNER_TEMP/auth-assets"

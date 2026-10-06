@@ -1,33 +1,28 @@
-# DiPlay CN {{VERSION}}
+# DiPlay {{VERSION}}（SurfaceView 兜底测试版）
 
-基于官方 DiPlay v0.2.11。包名 `com.shihab.diplay.cn`，可与官方版并存。覆盖安装上一版 CN 即可保留设置。
+基于**官方 DiPlay v0.2.13 源码**，仅追加一个显示路径补丁：当车机 ROM 不给应用窗口硬件加速时，自动把 CarPlay 视频输出从 TextureView 切换到 SurfaceView。包名 `com.shihab.diplay`，与官方版同包，可直接覆盖安装（本版 versionCode 33 > 官方 32）。
 
-**下载**
+**为什么需要这个补丁**
 
-- APK：本 Release 附带的 `DiPlay-cn-{{VERSION}}.apk`（Gitee 同步：https://gitee.com/oneeyear/DiPlay-CN/releases/latest）
-- 完整优化记录：[docs/CN_OPTIMIZATIONS.md](https://github.com/serein-morii/DiPlay-CN/blob/main/docs/CN_OPTIMIZATIONS.md)
+部分 Android 9 车机（实测：长安 CS75PLUS 2021 款 / 梧桐 S311_ICA ROM）不向应用窗口提供硬件加速：`W TextureView: A TextureView or a subclass can only be used with hardware acceleration enabled.` 在这种窗口里，TextureView 永远不会产生 SurfaceTexture（`onSurfaceTextureAvailable` 不回调），视频管线拿不到输出面 → CarPlay 会话建立、音频正常、视频包以 ~20fps 到达，但画面全黑（上游 issue #278 的典型症状之一）。SurfaceView 不依赖窗口级硬件加速，由 SurfaceFlinger 直接合成，是这类 ROM 上视频播放的通用路径。
 
 **本版更新**
 
-- 待连接不再黑屏：主屏与仪表盘等待页均为浅色底+提示语，连上自动切回画面。
-- 打开「关于」自动检查到新版本直接弹更新窗口，同一版本只弹一次。
-- 修复下载完成后安装页不弹：自动检测并引导开启「允许安装未知应用」，授权返回后继续安装。
-- 仪表盘投屏开始/结束改为 300ms 淡入淡出过渡，不再硬切；中控画面保持原样。
-- CarPlay 内下滑菜单保留新版，并新增「打开 DiPlay 完整设置」一键进入原完整设置。
-- 小屏「自动」模式补授权入口：设置内显示 Usage Access 状态，未授权一键跳转授权页，授权后重连生效。
-- 更新检查失败不再误报「无法连接 GitHub」，超时放宽并自动重试一次。
-- 同步官方 0.2.12：同局域网连接、USB 弹窗自动确认、昼夜四模式与环境光、画质调节、自定义分辨率 30%–160%、系统栏独立开关、DiLink 4/3 仪表路由与恢复、方向盘按键等约 24 项更新。
-- CN 全部专属功能保留：应用名称/图标预置（含 DiPlayCN）、四通道更新+自动检查、自定义转向卡（1% 滑条/透明度/昼夜/行程条）、小屏导航三模式、蓝牙延时暂停、开机自启 ADB 修复、声道立即生效。
+- 新增：检测到窗口 `isHardwareAccelerated=false` 时，视频层自动切换为 SurfaceView（`attachSurface` 直接使用 `SurfaceHolder.getSurface()`，黑边/信箱区域按既有 `contentRect()` 计算摆位），并在诊断日志记录（`Video window hardwareAccelerated=…` / `Falling back to SurfaceView video output`）。
+- 除显示路径外，其余代码与官方 v0.2.13 一致（连接、音频、触控、设置等全部沿用官方实现）。
+- 补丁全文：`patches/sw-video-fallback.patch`（基于官方源码树，可 `git apply`）。
 
-请安装在车机上，不要安装在 iPhone 上。车机必须允许安装 APK。
+**下载**
 
-**免责声明与法律声明**
+- APK：本 Release 附带的 `DiPlay-v{{VERSION}}.apk`
+- SHA-256：同目录 `.sha256` 文件
 
-- **独立项目**：本软件为个人学习与技术研究所用的独立社区项目，非 Apple 认证产品（未参与 MFi 计划），与 Apple Inc.、比亚迪（BYD）及其任何关联公司不存在隶属、合作、代理、背书或授权关系。本项目不以任何形式暗示相反内容。
-- **商标**：“Apple”“CarPlay”“iPhone”是 Apple Inc. 的商标，“BYD”“比亚迪”是其权利人的商标。本项目仅在说明兼容性与功能所必需的范围内以叙述方式使用上述词汇，不作商品名称、标识或宣传用途；应用内“应用名称”选项仅为使用者在本机自行选择的个性化显示，项目自身名称始终为 DiPlay CN。请在遵守商标权人条款及当地法律的前提下使用。
-- **技术边界**：本项目不包含任何 Apple 专有代码、协议密钥或受保护技术资料，不破解、不规避任何数字版权保护或技术保护措施；运行所用配件身份为从公开渠道获得的既有实验性数据，其来源与局限见仓库文档。
-- **非商业**：本软件免费提供，不销售、不内置广告、不收集用户数据用于商业目的。
-- **免责与责任**：本软件按“现状”提供，不作任何明示或默示保证（含适销性、特定用途适用性、不侵权）。不保证在所有车机、固件、Android/iOS 版本上可用。因下载、安装、使用或分发本软件产生的任何直接或间接损失（包括设备损坏、数据丢失、车辆功能异常、保修受影响或交通事故），作者与贡献者不承担责任。请在停车时安装与设置，驾驶中请勿操作。
-- **开源合规**：基于 xcertplay（GPL-3.0），界面与网站样式改编自 DiAuto（AGPL-3.0），许可与署名见 docs/THIRD_PARTY_NOTICES.md；再分发时须保留本声明及上述许可信息。
-- **权利主张**：若任何权利人认为本项目内容侵犯其合法权益，请通过仓库 Issues 提出并附权利证明，核实后将及时处理。下载或使用本软件即表示已阅读并理解本声明。
+**给长安 CS75PLUS（21 款）车机安装的注意**
 
+1. 本 APK 的签名与本仓库 CI 的通用测试签名一致，**装车机前必须用 91ee 证书重签（v1 签名）**：车机只认证书序列号 `91EE0710F45B5E2E`。
+2. 覆盖安装需保持同证书 + 更高 versionCode（本版 33，官方 0.2.13 为 32）。
+3. 安装后可通过应用内「诊断报告」核验：日志应出现 `Falling back to SurfaceView video output`，且视频统计 `shown` 应为正数。
+
+**免责声明（简）**
+
+独立社区项目，非 Apple 认证产品，与 Apple Inc.、比亚迪及其关联公司无隶属、合作或授权关系；“Apple”“CarPlay”“iPhone” 是 Apple Inc. 的商标。本项目仅用于个人学习与技术研究，不含 Apple 专有代码；运行所用的公开渠道配件身份数据说明见仓库文档。软件按“现状”提供、不作任何保证；请在停车时安装与设置，驾驶中请勿操作。基于 xcertplay（GPL-3.0），再分发须保留许可与署名信息。

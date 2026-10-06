@@ -13,10 +13,6 @@ android {
         minSdk = 28
     }
 
-    sourceSets {
-        getByName("main").assets.srcDir(rootProject.file("docs"))
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
